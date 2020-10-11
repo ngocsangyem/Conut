@@ -2,6 +2,7 @@ import path from 'path';
 
 import glob from 'glob';
 import minimist from 'minimist';
+import gulp from 'gulp';
 import browserSyncLib from 'browser-sync';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import notify from 'gulp-notify';
@@ -20,6 +21,9 @@ const isDev = args.development;
 
 // Create a new browserSync instance
 const browserSync = browserSyncLib.create();
+
+// Karma test
+const KarmaServer = require('karma').Server;
 
 // Error handle
 const reportError = function (error) {
@@ -68,4 +72,23 @@ const reportError = function (error) {
 	this.emit('end');
 };
 
-export { args, isDev, browserSync, plugins, path, glob };
+// Gulp environment
+const { task, watch, src, dest, series, parallel } = gulp;
+
+export {
+	args,
+	isDev,
+	browserSync,
+	plugins,
+	path,
+	glob,
+	KarmaServer,
+	reportError,
+	gulp,
+	task,
+	watch,
+	src,
+	dest,
+	series,
+	parallel,
+};

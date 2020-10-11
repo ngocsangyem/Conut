@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","sources":["index/index.scss"],"sourcesContent":["body {\n\tbackground-color: red;\n}\n"],"names":[],"mappings":"AAAA,AAAA,IAAI,CAAC;EACJ,gBAAgB,EAAE,GAAG;CACrB"}

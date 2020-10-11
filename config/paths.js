@@ -19,6 +19,10 @@ export const paths = {
 		return path.join(this._root, ...arguments);
 	},
 
+	tasks() {
+		return path.join(this._tasks, ...arguments);
+	},
+
 	app() {
 		return path.join(this._app, ...arguments);
 	},
@@ -39,6 +43,10 @@ export const paths = {
 		return path.join(this._components, ...arguments);
 	},
 
+	server() {
+		return path.join(this._server, ...arguments);
+	},
+
 	_root: root,
 	_config: __dirname,
 	_tasks: path.join(rootConfig, 'gulp', 'tasks'),
@@ -49,4 +57,5 @@ export const paths = {
 	_routes: path.join(root, 'app', 'routes'),
 	_views: path.join(root, 'app', 'views'),
 	_components: path.join(root, 'app', '@YEB-COMPONENTS'),
+	_server: path.join(root, 'app', 'server'),
 };
