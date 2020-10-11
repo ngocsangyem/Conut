@@ -1,0 +1,48 @@
+{
+	"name": "yab",
+	"version": "1.0.0",
+	"description": "Page builder for front-end",
+	"main": "gulpfile.babel.js",
+	"dependencies": {
+		"browser-sync": "^2.26.12",
+		"express": "^4.17.1",
+		"glob": "^7.1.6",
+		"gulp": "^4.0.2",
+		"terser-webpack-plugin": "^4.2.3",
+		"vinyl-named": "^1.1.0",
+		"webpack": "^5.0.0",
+		"webpack-stream": "^6.1.0"
+	},
+	"devDependencies": {
+		"ansi-colors": "^4.1.1",
+		"babel-loader": "^8.1.0",
+		"beeper": "^2.0.0",
+		"gulp-load-plugins": "^2.0.5",
+		"gulp-notify": "^3.2.0",
+		"minimist": "^1.2.5",
+		"webpack-node-externals": "^2.5.2"
+	},
+	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ngocsangyem/YAB.git"
+	},
+	"keywords": [
+		"YAB",
+		"HTML",
+		"CSS",
+		"Javascript",
+		"Scss",
+		"Babel",
+		"Node",
+		"Nodejs",
+		"Page-Builder",
+		"Drag-Drop"
+	],
+	"author": "ngocsangyem",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ngocsangyem/YAB/issues"
+	},
+	"homepage": "https://github.com/ngocsangyem/YAB#readme"
+}
