@@ -2,7 +2,6 @@ import {
 	task,
 	src,
 	dest,
-	path,
 	args,
 	reportError,
 	browserSync,
@@ -51,8 +50,13 @@ task('styles', () => {
 				precision: 10,
 			})
 		)
-		.pipe(plugins.if(!args.production, plugins.sourcemaps.write('./')))
 		.pipe(plugins.if(args.production, plugins.postcss(postCssPlugins)))
+		.pipe(
+			plugins.rename(function (path) {
+				path.dirname = '';
+			})
+		)
+		.pipe(plugins.if(!args.production, plugins.sourcemaps.write('./')))
 		.pipe(dest(paths.public('css')))
 		.pipe(
 			browserSync.reload({
