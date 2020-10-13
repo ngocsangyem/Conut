@@ -1,4 +1,4 @@
-import { task, args, browserSync, config, taskTarget } from '../../utils';
+import { task, args, browserSync } from '../../utils';
 import { taskTarget, config } from '../../config';
 
 task('browserSync', () => {
