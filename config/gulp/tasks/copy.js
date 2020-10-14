@@ -1,14 +1,6 @@
 import pngquant from 'imagemin-pngquant';
 
-import {
-	task,
-	src,
-	dest,
-	args,
-	reportError,
-	browserSync,
-	plugins,
-} from '../../utils';
+import { task, src, dest, plugins, parallel } from '../../utils';
 import { paths } from '../../paths';
 
 const imagesDest = paths.root('@COMPONETS/images');
@@ -39,3 +31,20 @@ task('copy:fonts', () => {
 		.pipe(plugins.changed(fontsDest))
 		.pipe(dest(fontsDest));
 });
+
+task('copy:pug', () => {
+	return src(paths.components('**/*.pug')).pipe(dest('@COMPONETS/template'));
+});
+
+task('copy:js', () => {
+	return src(paths.components('**/*.js')).pipe(dest('@COMPONETS/template'));
+});
+
+task('copy:scss', () => {
+	return src(paths.components('**/*.scss')).pipe(dest('@COMPONETS/template'));
+});
+
+task(
+	'copy',
+	parallel('copy:images', 'copy:fonts', 'copy:pug', 'copy:js', 'copy:scss')
+);
