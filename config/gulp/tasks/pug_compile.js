@@ -46,8 +46,12 @@ task('pug:compile', () => {
 			modifyFile((content, filePath, file) => {
 				const extension = path.extname(filePath);
 				const fileName = path.basename(filePath, extension);
-				const assetName = fileName.split(/-{2,}/)[0]
-				return htmlTemplate(content, fileName, assetName);
+				const assetName = fileName.split(/-{2,}/)[0];
+				const parseContent = content.replace(
+					/(,|'|"|`| )@([\w-]+)/gi,
+					'"images'
+				);
+				return htmlTemplate(parseContent, fileName, assetName);
 			})
 		)
 		.pipe(

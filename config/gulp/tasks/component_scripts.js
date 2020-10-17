@@ -8,7 +8,7 @@ import { task, src, dest, plugins, reportError } from '../../utils';
 import { paths } from '../../paths';
 
 task('component:scripts', () => {
-	return src(paths.components('**/*.js'))
+	return src(paths.components('views/**/*.js'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,

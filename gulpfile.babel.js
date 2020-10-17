@@ -16,3 +16,13 @@ glob.sync(paths.tasks('**/*.js'))
 	.map(function (file) {
 		require(file);
 	});
+
+task(
+	'dev',
+	series([
+		'clean',
+		parallel('styles', 'scripts', 'pug:compile', 'copy', 'assets'),
+		'browserSync',
+		'watch',
+	])
+);

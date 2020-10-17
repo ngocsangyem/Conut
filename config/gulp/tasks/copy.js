@@ -1,13 +1,13 @@
 import pngquant from 'imagemin-pngquant';
 
-import { task, src, dest, plugins, parallel } from '../../utils';
+import { task, src, dest, plugins, parallel, series } from '../../utils';
 import { paths } from '../../paths';
 
 const imagesDest = paths.root('@COMPONETS/images');
 const fontsDest = paths.root('@COMPONETS/fonts');
 
 task('copy:images', () => {
-	src([
+	return src([
 		`${paths.public('images/**/*.{jpg,jpeg,gif,svg,png}')}`,
 		`!${paths.public('images/uploads/**/*')}`,
 	])
@@ -27,7 +27,7 @@ task('copy:images', () => {
 });
 
 task('copy:fonts', () => {
-	src([`${paths.public('fonts/**/*')}`])
+	return src([`${paths.public('fonts/**/*')}`])
 		.pipe(plugins.changed(fontsDest))
 		.pipe(dest(fontsDest));
 });
@@ -45,10 +45,17 @@ task('copy:scss', () => {
 });
 
 task('copy:vendor:css', () => {
-	return src(paths.public('vendor/css/**/*.css')).pipe(dest('@COMPONETS/css'));
+	return src(paths.public('vendor/css/**/*.css')).pipe(
+		dest('@COMPONETS/css')
+	);
 });
 
 task(
 	'copy',
-	parallel('copy:images', 'copy:fonts', 'copy:pug', 'copy:js', 'copy:scss', 'copy:vendor:css')
+	series(
+		'copy:pug',
+		'copy:js',
+		'copy:scss',
+		parallel('copy:images', 'copy:fonts', 'copy:vendor:css')
+	)
 );
