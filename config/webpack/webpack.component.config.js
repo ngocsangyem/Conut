@@ -1,10 +1,7 @@
 import TerserPlugin from 'terser-webpack-plugin';
 
-import { isDev } from '../utils';
-
-const WebpackConfig = {
-	devtool: isDev ? 'eval-source-map' : false,
-	mode: isDev ? 'development' : 'production',
+const WebpackComponentConfig = {
+	mode: 'production',
 	target: 'web',
 	module: {
 		rules: [
@@ -20,17 +17,13 @@ const WebpackConfig = {
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.jsx'],
 	},
-	plugins: [],
-};
-
-if (!isDev) {
-	WebpackConfig.plugins.push(
+	plugins: [
 		new TerserPlugin({
 			cache: true,
 			parallel: true,
 			extractComments: false,
-		})
-	);
-}
+		}),
+	],
+};
 
-export { WebpackConfig };
+export { WebpackComponentConfig };

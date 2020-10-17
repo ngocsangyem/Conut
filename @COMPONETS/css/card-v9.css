@@ -1,4 +1,4 @@
-.card__link {
+.card-v9 .card__link {
   display: block;
   position: relative;
   z-index: 1;
@@ -14,7 +14,7 @@
   transition: .3s;
 }
 
-.card__body {
+.card-v9 .card__body {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -23,35 +23,35 @@
   padding: var(--space-md);
 }
 
-.card__content {
+.card-v9 .card__content {
   max-width: var(--max-width-xxs);
   padding-bottom: var(--space-xxxl);
 }
 
-.card__label {
+.card-v9 .card__label {
   --color-o: 0.5;
   color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), var(--color-o, 1));
   font-size: var(--text-sm, 0.833em);
   margin-bottom: var(--space-xxs);
 }
 
-.card__title {
+.card-v9 .card__title {
   font-size: var(--text-xl, 1.728em);
   color: var(--color-white);
 }
 
-.card__button {
+.card-v9 .card__button {
   margin-top: auto;
 }
 
-.card__button span {
+.card-v9 .card__button span {
   position: relative;
   display: inline-block;
   padding: var(--space-xs) var(--space-sm);
   -webkit-font-smoothing: antialiased;
 }
 
-.card__button span::after {
+.card-v9 .card__button span::after {
   content: '';
   position: absolute;
   z-index: 1;
@@ -63,29 +63,29 @@
   background-color: hsla(var(--color-contrast-higher-h), var(--color-contrast-higher-s), var(--color-contrast-higher-l), 0.8);
 }
 
-.card__button i {
+.card-v9 .card__button i {
   position: relative;
   z-index: 2;
   color: var(--color-bg);
 }
 
 @media (min-width: 64rem) {
-  .card__link:hover {
+  .card-v9 .card__link:hover {
     box-shadow: var(--shadow-md);
   }
-  .card__link:hover .card__button span::after {
+  .card-v9 .card__link:hover .card__button span::after {
     opacity: 1;
     transform: translateY(0);
   }
-  .card__link:hover .card__button i {
+  .card-v9 .card__link:hover .card__button i {
     opacity: 1;
   }
-  .card__button span::after {
+  .card-v9 .card__button span::after {
     opacity: 0;
     transform: translateY(25%);
     transition: opacity 0.3s, transform 0.3s var(--ease-out), -webkit-transform 0.3s var(--ease-out);
   }
-  .card__button i {
+  .card-v9 .card__button i {
     opacity: 0;
     transition: opacity .3s;
   }

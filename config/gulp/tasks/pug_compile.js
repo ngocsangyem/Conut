@@ -11,24 +11,27 @@ import { paths } from '../../paths';
 
 import modifyFile from 'gulp-modify-file';
 
-const htmlTemplate = (content, title) => {
+const htmlTemplate = (content, title, assetName) => {
 	return `
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<link rel="stylesheet" href="./css/codyhouse.css">
+			<link rel="stylesheet" href="./css/${assetName}.css">
 			<title>${title}</title>
 		</head>
 		<body>
 			${content}
+			<script src="./js/${assetName}.js"></script>
 		</body>
 	</html>
 	`;
 };
 
 task('pug:compile', () => {
-	return src(paths.components('**/*.pug'))
+	return src(paths.components('views/**/*.pug'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -41,9 +44,10 @@ task('pug:compile', () => {
 		)
 		.pipe(
 			modifyFile((content, filePath, file) => {
-				var extension = path.extname(filePath);
-				var fileName = path.basename(filePath, extension);
-				return htmlTemplate(content, fileName);
+				const extension = path.extname(filePath);
+				const fileName = path.basename(filePath, extension);
+				const assetName = fileName.split(/-{2,}/)[0]
+				return htmlTemplate(content, fileName, assetName);
 			})
 		)
 		.pipe(

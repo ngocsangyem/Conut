@@ -44,7 +44,11 @@ task('copy:scss', () => {
 	return src(paths.components('**/*.scss')).pipe(dest('@COMPONETS/template'));
 });
 
+task('copy:vendor:css', () => {
+	return src(paths.public('vendor/css/**/*.css')).pipe(dest('@COMPONETS/css'));
+});
+
 task(
 	'copy',
-	parallel('copy:images', 'copy:fonts', 'copy:pug', 'copy:js', 'copy:scss')
+	parallel('copy:images', 'copy:fonts', 'copy:pug', 'copy:js', 'copy:scss', 'copy:vendor:css')
 );

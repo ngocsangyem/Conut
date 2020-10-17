@@ -1,4 +1,4 @@
-import webpackstream from 'webpack-stream';
+import webpackStream from 'webpack-stream';
 import webpack from 'webpack';
 
 import { glob, task, src, dest, path } from '../../utils';
@@ -20,7 +20,7 @@ const getEntry = () => {
 task('scripts', (done) => {
 	return src('.', { allowEmpty: true })
 		.pipe(
-			webpackstream(
+			webpackStream(
 				{
 					...WebpackConfig,
 					entry: getEntry(),

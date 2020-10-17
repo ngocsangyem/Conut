@@ -1,9 +1,9 @@
-.card {
+.card-v8 {
   --line-height-multiplier: 1;
   --text-vspace-multiplier: 1;
 }
 
-.card__link {
+.card-v8 .card__link {
   --bg-o: 1;
   display: block;
   overflow: hidden;
@@ -13,28 +13,28 @@
   transition: .2s;
 }
 
-.card__img img {
+.card-v8 .card__img img {
   display: block;
   width: 100%;
 }
 
-.card__content {
+.card-v8 .card__content {
   padding: var(--space-sm);
 }
 
-.card__label {
+.card-v8 .card__label {
   --color-o: 1;
   color: hsla(var(--color-contrast-medium-h), var(--color-contrast-medium-s), var(--color-contrast-medium-l), var(--color-o, 1));
   margin-bottom: var(--space-sm);
   font-size: var(--text-sm, 0.833em);
 }
 
-.card__title {
+.card-v8 .card__title {
   margin: 0;
   line-height: calc(var(--heading-line-height) * var(--line-height-multiplier, 1));
 }
 
-.card__title span {
+.card-v8 .card__title span {
   text-decoration: none;
   background-repeat: no-repeat;
   will-change: background-size;
@@ -44,10 +44,10 @@
 }
 
 @media (min-width: 64rem) {
-  .card__link:hover {
+  .card-v8 .card__link:hover {
     box-shadow: var(--shadow-md);
   }
-  .card__link:hover .card__title span {
+  .card-v8 .card__link:hover .card__title span {
     background-size: 100% 100%;
   }
 }
