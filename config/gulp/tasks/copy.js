@@ -1,16 +1,29 @@
 import pngquant from 'imagemin-pngquant';
 
-import { task, src, dest, plugins, parallel, series } from '../../utils';
+import {
+	task,
+	src,
+	dest,
+	plugins,
+	parallel,
+	series,
+	reportError,
+} from '../../utils';
 import { paths } from '../../paths';
 
-const imagesDest = paths.root('@COMPONETS/images');
-const fontsDest = paths.root('@COMPONETS/fonts');
+const imagesDest = paths.root('@COMPONETS/images/');
+const fontsDest = paths.root('@COMPONETS/fonts/');
 
 task('copy:images', () => {
 	return src([
 		`${paths.public('images/**/*.{jpg,jpeg,gif,svg,png}')}`,
 		`!${paths.public('images/uploads/**/*')}`,
 	])
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
 		.pipe(plugins.changed(imagesDest))
 		.pipe(
 			plugins.imagemin(
@@ -28,26 +41,56 @@ task('copy:images', () => {
 
 task('copy:fonts', () => {
 	return src([`${paths.public('fonts/**/*')}`])
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
 		.pipe(plugins.changed(fontsDest))
 		.pipe(dest(fontsDest));
 });
 
 task('copy:pug', () => {
-	return src(paths.components('**/*.pug')).pipe(dest('@COMPONETS/template'));
+	return src([
+		paths.components('**/*.pug'),
+		`!${paths.components('views/**/*.pug')}`,
+	])
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
+		.pipe(dest('@COMPONETS/template/'));
 });
 
 task('copy:js', () => {
-	return src(paths.components('**/*.js')).pipe(dest('@COMPONETS/template'));
+	return src(paths.components('**/*.js'))
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
+		.pipe(dest('@COMPONETS/template/'));
 });
 
 task('copy:scss', () => {
-	return src(paths.components('**/*.scss')).pipe(dest('@COMPONETS/template'));
+	return src(paths.components('**/*.scss'))
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
+		.pipe(dest('@COMPONETS/template/'));
 });
 
 task('copy:vendor:css', () => {
-	return src(paths.public('vendor/css/**/*.css')).pipe(
-		dest('@COMPONETS/css')
-	);
+	return src(paths.public('vendor/css/**/*.css'))
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
+		.pipe(dest('@COMPONETS/css/'));
 });
 
 task(

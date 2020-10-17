@@ -19,10 +19,10 @@ glob.sync(paths.tasks('**/*.js'))
 
 task(
 	'dev',
-	series([
+	series(
 		'clean',
 		parallel('styles', 'scripts', 'pug:compile', 'copy', 'assets'),
 		'browserSync',
-		'watch',
-	])
+		'watch'
+	)
 );

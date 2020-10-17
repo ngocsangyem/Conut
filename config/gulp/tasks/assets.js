@@ -2,7 +2,7 @@ import { task, src, dest, path, plugins, reportError } from '../../utils';
 import { paths } from '../../paths';
 
 task('assets', () => {
-	src(paths.components('**/assets/**/*'))
+	return src(paths.components('**/assets/**/*'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -29,7 +29,7 @@ task('assets', () => {
 
 					asset = asset.join(path.sep);
 					file.path = path.join(file.base, asset);
-					console.log('file.path', file.path);
+
 					return paths.root('@COMPONETS/images');
 				}
 			})
