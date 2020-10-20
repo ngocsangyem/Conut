@@ -1,4 +1,4 @@
-import express from 'express';
+const express = require('express');
 
 const router = express.Router();
 
@@ -8,4 +8,4 @@ const router = express.Router();
 
 const postIndex = router.post('/', (req, res, next) => {});
 
-export default postIndex;
+module.exports = { postIndex };

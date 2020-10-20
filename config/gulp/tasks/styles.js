@@ -1,4 +1,4 @@
-import {
+const {
 	task,
 	src,
 	dest,
@@ -6,15 +6,15 @@ import {
 	reportError,
 	browserSync,
 	plugins,
-} from '../../utils';
-import { paths } from '../../paths';
+} = require('../../utils');
+const { paths } = require('../../paths');
 
-import Fiber from 'fibers';
-import cssDeclarationSorter from 'css-declaration-sorter';
-import cssnano from 'cssnano';
-import combineMediaQueries from 'postcss-combine-media-query';
-import sortMediaQueries from 'postcss-sort-media-queries';
-import autoprefixer from 'autoprefixer';
+const Fiber = require('fibers');
+const cssDeclarationSorter = require('css-declaration-sorter');
+const cssnano = require('cssnano');
+const combineMediaQueries = require('postcss-combine-media-query');
+const sortMediaQueries = require('postcss-sort-media-queries');
+const autoprefixer = require('autoprefixer');
 
 const postCssPlugins = [
 	autoprefixer({

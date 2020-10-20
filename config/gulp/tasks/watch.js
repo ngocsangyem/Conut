@@ -1,5 +1,5 @@
-import { watch, series, parallel, args, task } from '../../utils';
-import { paths } from '../../paths';
+const { watch, series, parallel, args, task } = require('../../utils');
+const { paths } = require('../../paths');
 
 task('watch', (done) => {
 	if (!args.production) {

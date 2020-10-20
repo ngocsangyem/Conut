@@ -1,4 +1,4 @@
-import TerserPlugin from 'terser-webpack-plugin';
+const TerserPlugin = require('terser-webpack-plugin');
 
 const WebpackComponentConfig = {
 	mode: 'production',
@@ -26,4 +26,4 @@ const WebpackComponentConfig = {
 	],
 };
 
-export { WebpackComponentConfig };
+module.exports = { WebpackComponentConfig };

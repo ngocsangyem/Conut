@@ -1,5 +1,5 @@
-import { task, args, browserSync } from '../../utils';
-import { taskTarget, config } from '../../config';
+const { task, args, browserSync } = require('../../utils');
+const { taskTarget, config } = require('../../config');
 
 task('browserSync', () => {
 	browserSync.init({

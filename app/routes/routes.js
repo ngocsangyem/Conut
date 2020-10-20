@@ -1,3 +1,11 @@
-import * as IndexRouter from './index/index.routes';
+const IndexRouter = require('./index/index.routes');
 
-export { IndexRouter };
+module.exports = function (app) {
+	app.use('/', [
+		IndexRouter.deleteIndex,
+		IndexRouter.getIndex,
+		IndexRouter.getIndexList,
+		IndexRouter.postIndex,
+		IndexRouter.putIndex,
+	]);
+};

@@ -1,9 +1,9 @@
-import { path } from './utils';
+const { path } = require('./utils');
 
 const rootConfig = path.resolve(__dirname);
 const root = path.resolve(__dirname, '..');
 
-export const paths = {
+const paths = {
 	slashNormalize(str) {
 		const isExtendedLengthPath = /^\\\\\?\\/.test(str);
 		const hasNonAscii = /[^\u0000-\u0080]+/.test(str); // eslint-disable-line no-control-regex
@@ -59,3 +59,5 @@ export const paths = {
 	_components: path.join(root, 'app', '@YEB-COMPONENTS'),
 	_server: path.join(root, 'app', 'server'),
 };
+
+module.exports = { paths };

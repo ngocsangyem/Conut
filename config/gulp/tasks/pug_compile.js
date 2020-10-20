@@ -1,4 +1,4 @@
-import {
+const {
 	task,
 	src,
 	dest,
@@ -6,10 +6,10 @@ import {
 	browserSync,
 	plugins,
 	path,
-} from '../../utils';
-import { paths } from '../../paths';
+} = require('../../utils');
+const { paths } = require('../../paths');
 
-import modifyFile from 'gulp-modify-file';
+const modifyFile = require('gulp-modify-file');
 
 const htmlTemplate = (content, title, assetName) => {
 	return `

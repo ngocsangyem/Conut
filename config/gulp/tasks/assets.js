@@ -1,5 +1,5 @@
-import { task, src, dest, path, plugins, reportError } from '../../utils';
-import { paths } from '../../paths';
+const { task, src, dest, path, plugins, reportError } = require('../../utils');
+const { paths } = require('../../paths');
 
 task('assets', () => {
 	return src(paths.components('**/assets/**/*'))

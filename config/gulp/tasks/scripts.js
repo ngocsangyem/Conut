@@ -1,9 +1,9 @@
-import webpackStream from 'webpack-stream';
-import webpack from 'webpack';
+const webpackStream = require('webpack-stream');
+const webpack = require('webpack');
 
-import { glob, task, src, dest, path } from '../../utils';
-import { paths } from '../../paths';
-import { WebpackConfig } from '../../webpack/webpack.config';
+const { glob, task, src, dest, path } = require('../../utils');
+const { paths } = require('../../paths');
+const { WebpackConfig } = require('../../webpack/webpack.config');
 
 const getEntry = () => {
 	const files = {};

@@ -1,7 +1,15 @@
-import deleteIndex from './delete.route';
-import getIndex from './get.route';
-import getIndexList from './gets.route';
-import postIndex from './post.route';
-import putIndex from './put.route';
+const deleteIndex = require('./delete.route');
+const getIndex = require('./get.route');
+const getIndexList = require('./gets.route');
+const postIndex = require('./post.route');
+const putIndex = require('./put.route');
 
-export { deleteIndex, getIndex, getIndexList, postIndex, putIndex };
+const IndexRouter = {
+	deleteIndex,
+	getIndex,
+	getIndexList,
+	postIndex,
+	putIndex,
+};
+
+module.exports = IndexRouter;

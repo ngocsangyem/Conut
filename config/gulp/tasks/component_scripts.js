@@ -1,11 +1,13 @@
-import webpackStream from 'webpack-stream';
-import webpack from 'webpack';
-import named from 'vinyl-named';
+const webpackStream = require('webpack-stream');
+const webpack = require('webpack');
+const named = require('vinyl-named');
 
-import { WebpackComponentConfig } from '../../webpack/webpack.component.config';
+const {
+	WebpackComponentConfig,
+} = require('../../webpack/webpack.component.config');
 
-import { task, src, dest, plugins, reportError } from '../../utils';
-import { paths } from '../../paths';
+const { task, src, dest, plugins, reportError } = require('../../utils');
+const { paths } = require('../../paths');
 
 task('component:scripts', () => {
 	return src(paths.components('views/**/*.js'))

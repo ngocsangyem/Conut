@@ -1,6 +1,6 @@
-import TerserPlugin from 'terser-webpack-plugin';
+const TerserPlugin = require('terser-webpack-plugin');
 
-import { isDev } from '../utils';
+const { isDev } = '../utils';
 
 const WebpackConfig = {
 	devtool: isDev ? 'eval-source-map' : false,
@@ -33,4 +33,4 @@ if (!isDev) {
 	);
 }
 
-export { WebpackConfig };
+module.exports = { WebpackConfig };

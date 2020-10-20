@@ -1,7 +1,7 @@
-import del from 'del';
+const del = require('del');
 
-import { task } from '../../utils';
-import { paths } from '../../paths';
+const { task } = require('../../utils');
+const { paths } = require('../../paths');
 
 task('clean', (done) => {
 	return del([paths.root('@COMPONETS')]);

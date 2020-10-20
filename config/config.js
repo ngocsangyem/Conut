@@ -1,10 +1,11 @@
-import { isDev } from './utils';
+const { isDev } = require('./utils');
 
 const taskTarget = isDev ? 'build' : 'tmp';
 
 const config = {
-	port: 9000,
+	port: process.env.PORT || 3000,
 	baseUrl: './',
+	static: '/static',
 };
 
-export { taskTarget, config };
+module.exports = { taskTarget, config };

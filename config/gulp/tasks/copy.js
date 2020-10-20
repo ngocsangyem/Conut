@@ -1,6 +1,6 @@
-import pngquant from 'imagemin-pngquant';
+const pngquant = require('imagemin-pngquant');
 
-import {
+const {
 	task,
 	src,
 	dest,
@@ -8,8 +8,8 @@ import {
 	parallel,
 	series,
 	reportError,
-} from '../../utils';
-import { paths } from '../../paths';
+} = require('../../utils');
+const { paths } = require('../../paths');
 
 const imagesDest = paths.root('@COMPONETS/images/');
 const fontsDest = paths.root('@COMPONETS/fonts/');
