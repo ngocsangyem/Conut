@@ -1,0 +1,20 @@
+include ./includes/variables
+include ./includes/watermark
+
+block var
+doctype html
+html(dir='ltr', lang='en', itemscope, itemtype="http://schema.org/WebSite", prefix="og: http://ogp.me/ns#", class="no-js")
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		meta(name='format-detection', content='telephone=no')
+		meta(name='msapplication-tap-highlight', content='no')
+		meta(name='theme-color', content='')
+		meta(name='msapplication-navbutton-color', content='')
+		meta(name='apple-mobile-web-app-status-bar-style', content='')
+		link(rel="stylesheet", href="/static/vendor/css/codyhouse.css")
+		title #{title}
+	body
+		main
+			block main

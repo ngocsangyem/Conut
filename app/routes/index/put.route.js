@@ -8,4 +8,4 @@ const router = express.Router();
 
 const putIndex = router.put('/:dirname', (req, res, next) => {});
 
-module.exports = { putIndex };
+module.exports = putIndex;

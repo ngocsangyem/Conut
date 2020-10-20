@@ -6,7 +6,7 @@ const { config } = require('../../config/config');
 module.exports = function (app) {
 	app.use(bodyParser.json());
 	app.set('view engine', 'pug');
-	app.set('views', path.resolve(__dirname, 'views'));
+	app.set('views', path.resolve(__dirname, '../views'));
 
 	app.use(
 		config.static,

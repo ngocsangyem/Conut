@@ -8,4 +8,4 @@ const router = express.Router();
 
 const deleteIndex = router.get('/:dirname', (req, res, next) => {});
 
-module.exports = { deleteIndex };
+module.exports = deleteIndex;

@@ -8,4 +8,4 @@ const router = express.Router();
 
 const postIndex = router.post('/', (req, res, next) => {});
 
-module.exports = { postIndex };
+module.exports = postIndex;
