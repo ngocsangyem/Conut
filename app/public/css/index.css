@@ -1,5 +1,64 @@
-body {
-  background-color: red;
+.index-page {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.index-page > div {
+  width: 100%;
+}
+
+.grid-bg-fx {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-bg-fx__grid {
+  height: 100%;
+}
+
+.grid-bg-fx__grid > * {
+  position: relative;
+  margin-bottom: 0 !important;
+}
+
+.grid-bg-fx__grid > *::before,
+.grid-bg-fx__grid *::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: currentColor;
+}
+
+.grid-bg-fx__grid > *::before {
+  left: -1px;
+}
+
+.grid-bg-fx__grid > *::after {
+  right: 0;
+}
+
+.site-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.site-logo img {
+  width: 300px;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group input {
+  width: 100%;
 }
 
 /*# sourceMappingURL=index.css.map */

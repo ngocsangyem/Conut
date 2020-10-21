@@ -4,5 +4,29 @@ block var
 	- title = 'Home'
 	- bodyClass = 'home'
 
+block css
+	link(rel="stylesheet", href="/static/css/index.css")
+
 block main
-	h1 Hello World
+	section.index-page.position-relative.padding-y-xl
+		.position-relative.z-index-2
+			.container.max-width-lg
+				.grid.gap-sm
+					.col-2
+					div(class="col-8")
+						.site-logo.margin-bottom-sm
+							figure
+								img(src="/static/images/donut_logo.svg", alt="alt")
+						.input-group
+							input#projectName.form-control.flex-grow(type='text' name='projectName' placeholder="Enter your project's name")
+							button.margin-left-sm.btn.btn--primary Let go
+					.col-2
+		.grid-bg-fx.z-index-1(aria-hidden='true')
+			.container.max-width-lg(class='height-100%')
+				.grid-bg-fx__grid.grid.gap-sm.color-contrast-higher(class='color-opacity-10%')
+					.col-2
+					.col-2
+					.col-2
+					.col-2
+					.col-2
+					.col-2

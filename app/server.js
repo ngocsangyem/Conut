@@ -9,4 +9,6 @@ const app = express();
 addMiddlewares(app);
 addRoutes(app);
 
-app.listen(config.port);
+app.listen(config.port, () => {
+	console.log('Listen to http://localhost:' + config.port);
+});
