@@ -8,7 +8,7 @@ block css
 	link(rel="stylesheet", href="/static/css/index.css")
 
 block main
-	section.index-page.position-relative.padding-y-xl
+	section.index-page.position-relative.padding-y-xl(data-key=key, data-memory=memory, data-cpu=cpu, data-platform=platform, data-version=node.node)
 		.position-relative.z-index-2
 			.container.max-width-lg
 				.grid.gap-sm
