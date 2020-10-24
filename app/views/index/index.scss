@@ -1,63 +1,17 @@
-.index-page {
+@import '../../styles/abstracts/mixins';
+@import '../../styles/base/variables';
+
+@import '../_layouts/components/project-name/project-name';
+@import '../_layouts/components/header/header';
+@import '../_layouts/components/sidepane/sidepane';
+@import '../_layouts/components/page-view/page-view';
+@import '../_layouts/components/page-view/page-view-nav';
+@import '../_layouts/components/page-view/page-view-content';
+
+.pages-edit-main {
+	height: calc(100vh - 4.3125rem);
+
 	display: flex;
-	align-items: center;
 
-	min-height: 100vh;
-
-	>div {
-		width: 100%;
-	}
-}
-
-.grid-bg-fx {
-	pointer-events: none;
-	position: fixed;
-	top: 0;
-	left: 0;
 	width: 100%;
-	height: 100%;
-}
-
-.grid-bg-fx__grid {
-	height: 100%;
-
-	>* {
-		position: relative;
-		margin-bottom: 0 !important;
-	}
-
-	>*::before,
-	*::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		height: 100%;
-		width: 1px;
-		background-color: currentColor;
-	}
-
-	>*::before {
-		left: -1px;
-	}
-
-	>*::after {
-		right: 0;
-	}
-}
-
-.site-logo {
-	display: flex;
-	justify-content: center;
-
-	img {
-		width: 300px;
-	}
-}
-
-.input-group {
-	display: flex;
-
-	input {
-		width: 100%;
-	}
 }

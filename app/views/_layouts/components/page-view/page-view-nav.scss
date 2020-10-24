@@ -1,0 +1,146 @@
+.page-view-nav {
+	margin-left: var(--circle-size);
+	margin-top: 0.3125rem;
+
+	ul {
+		display: flex;
+	}
+
+	li:last-child::after,
+	li:last-child a:after,
+	li:first-child:before,
+	li:first-child a:before,
+	li.is-active::after,
+	li.is-active::before,
+	li.is-active a::after,
+	li.is-active a::before {
+		content: "";
+	}
+
+	li,
+	a {
+
+		&::after,
+		&::before {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+
+	li {
+		position: relative;
+
+		&::after,
+		&::before {
+			background-color: $neutralShade8;
+			width: 10px;
+			height: 10px;
+		}
+
+		&::before {
+			left: -10px;
+		}
+
+		&::after {
+			right: -10px;
+		}
+
+		&.is-active {
+			z-index: 3;
+
+			&::before,
+			&::after {
+				background: $neutralShade6;
+				z-index: 1;
+			}
+
+			a {
+				background-color: $neutralShade6;
+				color: $light;
+
+				&::after,
+				&::before {
+					background-color: $neutralShade8;
+				}
+			}
+		}
+
+		&:first-child {
+			.btn-page-delete {
+				opacity: 0;
+				pointer-events: none;
+			}
+		}
+
+		&:hover {
+			.btn-page-delete {
+				opacity: 1;
+			}
+		}
+	}
+
+	a {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+
+		padding: 0.625rem 1.3rem;
+
+		background-color: $neutralShade8;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		color: $light;
+
+		font-size: 1rem;
+
+		&::after,
+		&::before {
+			width: var(--circle-size);
+			height: var(--circle-size);
+
+			border-radius: 10px;
+			background: #ffffff;
+
+			z-index: 2;
+		}
+
+		&::before {
+			left: calc(-1 * var(--circle-size));
+		}
+
+		&:after {
+			right: calc(-1 * var(--circle-size));
+		}
+
+		i {
+			display: inline-block;
+		}
+
+		.fa-file {
+			margin-right: 0.3rem;
+		}
+	}
+
+	.btn-page-delete {
+		background-color: $accent3Color;
+		border-radius: 50%;
+		border: none;
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+
+		cursor: pointer;
+
+		padding: 0;
+		margin-left: 0.3rem;
+
+		width: var(--circle-size);
+		height: var(--circle-size);
+
+		font-size: 1rem;
+		color: $light;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

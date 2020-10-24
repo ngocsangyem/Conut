@@ -29,7 +29,10 @@ const postCssPlugins = [
 ];
 
 task('styles', () => {
-	return src(paths.views('**/*.scss'))
+	return src([
+		paths.views('**/*.scss'),
+		`!${paths.views('{**/_*,**/_*/**}')}`,
+	])
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
