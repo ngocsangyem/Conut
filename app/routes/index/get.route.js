@@ -1,5 +1,5 @@
 const express = require('express');
-const generateID = require('../../helpers/generateId');
+const indexhHandle = require('../../controllers/index');
 
 const router = express.Router();
 
@@ -8,14 +8,7 @@ const router = express.Router();
  */
 
 const getIndex = router.get('', (req, res, next) => {
-	res.status(200);
-	res.render('index', {
-		key: generateID(10),
-		memory: process.memoryUsage(),
-		cpu: process.cpuUsage(),
-		platform: process.platform,
-		node: process.versions,
-	});
+	indexhHandle.renderIndex(req, res);
 });
 
 module.exports = getIndex;
