@@ -7,7 +7,8 @@ const router = express.Router();
  * Get index route by id
  */
 
-const getIndex = router.get('/', (req, res, next) => {
+const getIndex = router.get('', (req, res, next) => {
+	res.status(200);
 	res.render('index', {
 		key: generateID(10),
 		memory: process.memoryUsage(),

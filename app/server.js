@@ -13,7 +13,7 @@ const listenApp = () => {
 		files: [paths.components('**/*.{js,css}')],
 		notify: true,
 		online: true,
-		open: true,
+		// open: true,
 		port: config.port,
 		proxy: 'localhost:' + config.port,
 		ui: false,

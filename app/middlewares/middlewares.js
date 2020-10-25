@@ -12,7 +12,4 @@ module.exports = function (app) {
 		config.static,
 		express.static(path.resolve(__dirname, '../public'))
 	);
-	app.get(config.static + '/*', function (req, res) {
-		res.status(404).send('Not found');
-	});
 };
