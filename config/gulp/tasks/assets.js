@@ -2,7 +2,7 @@ const { task, src, dest, path, plugins, reportError } = require('../../utils');
 const { paths } = require('../../paths');
 
 task('assets', () => {
-	return src(paths.components('**/assets/**/*'))
+	return src(paths.mainComponents('**/assets/**/*'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -15,13 +15,13 @@ task('assets', () => {
 
 				if (extname === '.js') {
 					file.path = path.join(file.base, basename);
-					return paths.root('@COMPONETS/js');
+					return paths.components('js');
 				} else if (extname === '.css') {
 					file.path = path.join(file.base, basename);
-					return paths.root('@COMPONETS/css');
+					return paths.components('css');
 				} else {
 					let array = path
-						.relative(paths._components, file.path)
+						.relative(paths._mainComponents, file.path)
 						.split(path.sep)
 						.slice(1)
 						.filter((f) => f !== 'assets');
@@ -30,7 +30,7 @@ task('assets', () => {
 					asset = asset.join(path.sep);
 					file.path = path.join(file.base, asset);
 
-					return paths.root('@COMPONETS/images');
+					return paths.components('images');
 				}
 			})
 		);

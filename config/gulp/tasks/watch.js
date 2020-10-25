@@ -8,11 +8,11 @@ task('watch', (done) => {
 		watch([paths.views('**/*.js')], parallel('scripts', 'copy:js'));
 
 		watch(
-			[paths.components('**/*.pug')],
+			[paths.mainComponents('**/*.pug')],
 			parallel('pug:compile', 'copy:pug')
 		);
 
-		watch([paths.components('**/assets/**/*')], parallel('assets'));
+		watch([paths.mainComponents('**/assets/**/*')], parallel('assets'));
 
 		watch([paths.public('**/*.css')], parallel('copy:vendor:css'));
 

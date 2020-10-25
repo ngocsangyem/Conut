@@ -39,6 +39,10 @@ const paths = {
 		return path.join(this._views, ...arguments);
 	},
 
+	mainComponents() {
+		return path.join(this._mainComponents, ...arguments);
+	},
+
 	components() {
 		return path.join(this._components, ...arguments);
 	},
@@ -56,7 +60,8 @@ const paths = {
 	_public: path.join(root, 'app', 'public'),
 	_routes: path.join(root, 'app', 'routes'),
 	_views: path.join(root, 'app', 'views'),
-	_components: path.join(root, 'app', '@YEB-COMPONENTS'),
+	_mainComponents: path.join(root, 'app', '@YEB-COMPONENTS'),
+	_components: path.join(root, '@COMPONETS'),
 	_server: path.join(root, 'app', 'server'),
 };
 

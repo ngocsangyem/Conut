@@ -52,35 +52,35 @@ task('copy:fonts', () => {
 
 task('copy:pug', () => {
 	return src([
-		paths.components('**/*.pug'),
-		`!${paths.components('views/**/*.pug')}`,
+		paths.mainComponents('**/*.pug'),
+		`!${paths.mainComponents('views/**/*.pug')}`,
 	])
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest('@COMPONETS/template/'));
+		.pipe(dest(paths.components('template')));
 });
 
 task('copy:js', () => {
-	return src(paths.components('**/*.js'))
+	return src(paths.mainComponents('**/*.js'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest('@COMPONETS/template/'));
+		.pipe(dest(paths.components('template')));
 });
 
 task('copy:scss', () => {
-	return src(paths.components('**/*.scss'))
+	return src(paths.mainComponents('**/*.scss'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest('@COMPONETS/template/'));
+		.pipe(dest(paths.components('template')));
 });
 
 task('copy:vendor:css', () => {
@@ -90,7 +90,7 @@ task('copy:vendor:css', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest('@COMPONETS/css/'));
+		.pipe(dest(paths.components('css')));
 });
 
 task(

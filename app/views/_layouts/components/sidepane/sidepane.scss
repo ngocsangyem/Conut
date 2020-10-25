@@ -1,7 +1,7 @@
 .pages-edit-sidepane {
 	max-width: 14.375rem;
 	width: 100%;
-	
+
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 
@@ -16,6 +16,7 @@
 			&.is-active {
 				.component-accordion-title {
 					background-color: rgba($neutralShade7, 0.5);
+
 					&::before {
 						content: '\f068';
 					}
@@ -31,12 +32,13 @@
 
 			display: flex;
 			align-items: center;
-			
+
 			color: $light;
 			transition: background-color 0.3s ease-in-out;
 
 			span {
 				font-size: 0.8rem;
+
 				&.component-accordion-count {
 					display: inline-block;
 
@@ -55,7 +57,7 @@
 				font-family: 'Font Awesome 5 Pro';
 				font-weight: 300;
 				font-size: 1rem;
-				
+
 				position: absolute;
 				top: 50%;
 				right: 0.5rem;
@@ -76,6 +78,7 @@
 
 		.component-accordion-item {
 			cursor: move;
+
 			figure {
 				position: relative;
 
@@ -98,6 +101,10 @@
 				background-color: $accentColor;
 				opacity: 0;
 				transition: opacity 0.3s ease-in-out;
+			}
+
+			a {
+				color: $light;
 			}
 
 			&:hover {

@@ -57,17 +57,13 @@
 			a {
 				background-color: $neutralShade6;
 				color: $light;
-
-				&::after,
-				&::before {
-					background-color: $neutralShade8;
-				}
 			}
 		}
 
 		&:first-child {
 			.btn-page-delete {
 				opacity: 0;
+				visibility: hidden;
 				pointer-events: none;
 			}
 		}
@@ -141,6 +137,18 @@
 
 		&:focus {
 			outline: none;
+		}
+	}
+
+	&.views {
+		li.is-active {
+			a {
+
+				&::after,
+				&::before {
+					background-color: $neutralShade8;
+				}
+			}
 		}
 	}
 }

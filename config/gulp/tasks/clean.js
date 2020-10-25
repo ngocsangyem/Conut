@@ -4,5 +4,5 @@ const { task } = require('../../utils');
 const { paths } = require('../../paths');
 
 task('clean', (done) => {
-	return del([paths.root('@COMPONETS')]);
+	return del([paths._components]);
 });

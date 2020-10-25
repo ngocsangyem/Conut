@@ -29,7 +29,7 @@ const postCssPlugins = [
 
 task('component:styles', () => {
 	return (
-		src(paths.components('**/*.scss'))
+		src(paths.mainComponents('**/*.scss'))
 			.pipe(
 				plugins.plumber({
 					errorHandler: reportError,
@@ -48,7 +48,7 @@ task('component:styles', () => {
 					path.dirname = '';
 				})
 			)
-			.pipe(dest(paths.root('@COMPONETS/css')))
+			.pipe(dest(paths.components('css')))
 			.pipe(
 				browserSync.reload({
 					stream: true,

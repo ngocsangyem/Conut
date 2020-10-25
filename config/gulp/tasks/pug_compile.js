@@ -31,7 +31,7 @@ const htmlTemplate = (content, title, assetName) => {
 };
 
 task('pug:compile', () => {
-	return src(paths.components('views/**/*.pug'))
+	return src(paths.mainComponents('views/**/*.pug'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -59,7 +59,7 @@ task('pug:compile', () => {
 				path.dirname = '';
 			})
 		)
-		.pipe(dest('@COMPONETS/'))
+		.pipe(dest(paths._components))
 		.pipe(
 			browserSync.reload({
 				stream: true,

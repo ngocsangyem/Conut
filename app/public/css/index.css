@@ -193,6 +193,10 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+.pages-edit-sidepane .component-accordions .component-accordion-item a {
+  color: #fff;
+}
+
 .pages-edit-sidepane .component-accordions .component-accordion-item:hover figcaption {
   opacity: 1;
 }
@@ -262,12 +266,9 @@
   color: #fff;
 }
 
-.page-view-nav li.is-active a::after, .page-view-nav li.is-active a::before {
-  background-color: #1c1c1c;
-}
-
 .page-view-nav li:first-child .btn-page-delete {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -330,10 +331,24 @@
   outline: none;
 }
 
+.page-view-nav.views li.is-active a::after, .page-view-nav.views li.is-active a::before {
+  background-color: #1c1c1c;
+}
+
 .page-view-contents .page-view-content {
   background-color: #2d2d2d;
   height: calc(100vh - 7.125rem);
   overflow-y: auto;
+  position: relative;
+}
+
+.page-view-contents .page-view-content::before {
+  content: 'Drag and Drop your component in here';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
 }
 
 .pages-edit-main {

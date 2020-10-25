@@ -10,7 +10,7 @@ const { task, src, dest, plugins, reportError } = require('../../utils');
 const { paths } = require('../../paths');
 
 task('component:scripts', () => {
-	return src(paths.components('views/**/*.js'))
+	return src(paths.mainComponents('views/**/*.js'))
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -18,5 +18,5 @@ task('component:scripts', () => {
 		)
 		.pipe(named())
 		.pipe(webpackStream(WebpackComponentConfig, webpack, function () {}))
-		.pipe(dest('@COMPONETS/js'));
+		.pipe(dest(paths.components('js')));
 });
