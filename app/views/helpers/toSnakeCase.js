@@ -20,4 +20,4 @@ const toSnakeCase = (str) =>
 		.map((x) => x.toLowerCase())
 		.join('_');
 
-module.exports = toSnakeCase;
+export { toSnakeCase };

@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
+const Multer = require('./multer');
 
 const engine = require('./engine');
 
