@@ -1,7 +1,6 @@
 const del = require('del');
 
-const { task } = require('../../utils');
-const { paths } = require('../../paths');
+const { task, paths } = require('../../utils');
 
 task('clean', (done) => {
 	return del([paths._components]);

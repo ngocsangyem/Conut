@@ -6,8 +6,7 @@ const {
 	WebpackComponentConfig,
 } = require('../../webpack/webpack.component.config');
 
-const { task, src, dest, plugins, reportError } = require('../../utils');
-const { paths } = require('../../paths');
+const { task, src, dest, plugins, reportError, paths } = require('../../utils');
 
 task('component:scripts', () => {
 	return src(paths.mainComponents('views/**/*.js'))

@@ -8,6 +8,8 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const notify = require('gulp-notify');
 const c = require('ansi-colors');
 const beeper = require('beeper');
+const { paths } = require('../app/config/paths');
+const { taskTarget, config } = require('../app/config/config');
 
 // Load all gulp plugins based on their names
 // EX: gulp-copy -> copy
@@ -91,4 +93,7 @@ module.exports = {
 	dest,
 	series,
 	parallel,
+	paths,
+	taskTarget,
+	config,
 };

@@ -1,5 +1,4 @@
-const { watch, series, parallel, args, task } = require('../../utils');
-const { paths } = require('../../paths');
+const { watch, series, parallel, args, task, paths } = require('../../utils');
 
 task('watch', (done) => {
 	if (!args.production) {

@@ -1,7 +1,7 @@
-const { path } = require('./utils');
+const path = require('path');
 
-const rootConfig = path.resolve(__dirname);
-const root = path.resolve(__dirname, '..');
+const rootConfig = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '..', '..');
 
 const paths = {
 	slashNormalize(str) {
@@ -53,16 +53,16 @@ const paths = {
 
 	_root: root,
 	_config: __dirname,
-	_tasks: path.join(rootConfig, 'gulp', 'tasks'),
-	_webpack: path.join(rootConfig, 'webpack'),
-	_app: path.join(root, 'app'),
-	_generators: path.join(root, 'app', 'generators'),
-	_public: path.join(root, 'app', 'public'),
-	_routes: path.join(root, 'app', 'routes'),
-	_views: path.join(root, 'app', 'views'),
-	_mainComponents: path.join(root, 'app', '@YEB-COMPONENTS'),
-	_components: path.join(root, '@COMPONETS'),
-	_server: path.join(root, 'app', 'server'),
+	_tasks: path.join(root, 'build', 'gulp', 'tasks'),
+	_webpack: path.join(root, 'build', 'webpack'),
+	_app: path.join(rootConfig),
+	_generators: path.join(rootConfig, 'generators'),
+	_public: path.join(rootConfig, 'public'),
+	_routes: path.join(rootConfig, 'routes'),
+	_views: path.join(rootConfig, 'views'),
+	_mainComponents: path.join(rootConfig, '@YEB-COMPONENTS'),
+	_components: path.join(rootConfig, '@COMPONETS'),
+	_server: path.join(rootConfig, 'server'),
 };
 
 module.exports = { paths };

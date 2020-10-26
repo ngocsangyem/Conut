@@ -31,7 +31,13 @@
 		"vinyl-named": "^1.1.0",
 		"webpack": "^4.44.2",
 		"webpack-node-externals": "^2.5.2",
-		"webpack-stream": "^6.1.0"
+		"webpack-stream": "^6.1.0",
+		"gulp": "^4.0.2",
+		"glob": "^7.1.6",
+		"express": "^4.17.1",
+		"ansi-colors": "^4.1.1",
+		"beeper": "^2.0.0",
+		"karma": "^5.2.3"
 	},
 	"scripts": {},
 	"repository": {
@@ -66,12 +72,6 @@
 		"browser-sync": "^2.26.12",
 		"compression": "^1.7.4",
 		"pug": "^3.0.0",
-		"karma": "^5.2.3",
-		"minimist": "^1.2.5",
-		"gulp": "^4.0.2",
-		"glob": "^7.1.6",
-		"express": "^4.17.1",
-		"ansi-colors": "^4.1.1",
-		"beeper": "^2.0.0"
+		"minimist": "^1.2.5"
 	}
 }

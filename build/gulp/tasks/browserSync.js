@@ -1,5 +1,4 @@
-const { task, args, browserSync } = require('../../utils');
-const { taskTarget, config } = require('../../config');
+const { task, args, browserSync, taskTarget, config } = require('../../utils');
 
 task('browserSync', () => {
 	browserSync.init({

@@ -5,8 +5,8 @@ const {
 	reportError,
 	browserSync,
 	plugins,
+	paths,
 } = require('../../utils');
-const { paths } = require('../../paths');
 
 const Fiber = require('fibers');
 const cssDeclarationSorter = require('css-declaration-sorter');

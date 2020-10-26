@@ -8,11 +8,8 @@ const {
 	parallel,
 	series,
 	reportError,
+	paths,
 } = require('../../utils');
-const { paths } = require('../../paths');
-
-const imagesDest = paths.root('@COMPONETS/images/');
-const fontsDest = paths.root('@COMPONETS/fonts/');
 
 task('copy:images', () => {
 	return src([
@@ -24,7 +21,7 @@ task('copy:images', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(plugins.changed(imagesDest))
+		.pipe(plugins.changed(paths.components('images')))
 		.pipe(
 			plugins.imagemin(
 				[
@@ -36,7 +33,7 @@ task('copy:images', () => {
 				{ use: [pngquant({ speed: 10 })] }
 			)
 		)
-		.pipe(dest(imagesDest));
+		.pipe(dest(paths.components('images')));
 });
 
 task('copy:fonts', () => {
@@ -46,8 +43,8 @@ task('copy:fonts', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(plugins.changed(fontsDest))
-		.pipe(dest(fontsDest));
+		.pipe(plugins.changed(paths.components('fonts')))
+		.pipe(dest(paths.components('fonts')));
 });
 
 task('copy:pug', () => {

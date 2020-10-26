@@ -6,8 +6,8 @@ const {
 	browserSync,
 	plugins,
 	path,
+	paths,
 } = require('../../utils');
-const { paths } = require('../../paths');
 
 const modifyFile = require('gulp-modify-file');
 

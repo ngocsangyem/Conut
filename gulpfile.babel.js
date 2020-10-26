@@ -1,13 +1,12 @@
 import {
-	gulp,
 	path,
 	glob,
 	KarmaServer,
 	task,
 	series,
 	parallel,
-} from './config/utils';
-import { paths } from './config/paths';
+	paths,
+} from './build/utils';
 
 glob.sync(paths.tasks('**/*.js'))
 	.filter(function (file) {

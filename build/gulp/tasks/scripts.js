@@ -1,8 +1,7 @@
 const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
 
-const { glob, task, src, dest, path } = require('../../utils');
-const { paths } = require('../../paths');
+const { glob, task, src, dest, path, paths } = require('../../utils');
 const { WebpackConfig } = require('../../webpack/webpack.config');
 
 const getEntry = () => {

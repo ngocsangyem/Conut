@@ -1,5 +1,5 @@
 const multer = require('multer');
-const { paths } = require('../../config/paths');
+const { paths } = require('../config/paths');
 const toSnakeCase = require('../helpers/toSnakeCase');
 
 const Storage = multer.diskStorage({

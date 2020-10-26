@@ -1,5 +1,12 @@
-const { task, src, dest, path, plugins, reportError } = require('../../utils');
-const { paths } = require('../../paths');
+const {
+	task,
+	src,
+	dest,
+	path,
+	plugins,
+	reportError,
+	paths,
+} = require('../../utils');
 
 task('assets', () => {
 	return src(paths.mainComponents('**/assets/**/*'))
