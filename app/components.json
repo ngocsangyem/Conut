@@ -1,0 +1,185 @@
+{
+	"card": {
+		"card-v1": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Title of the Card",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, suscipit.",
+				"button": {
+					"label": "Read more",
+					"icon": ""
+				}
+			}
+		},
+		"card-v2": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Card Title",
+				"description": "Label"
+			}
+		},
+		"card-v3": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet.",
+				"description": "Label",
+				"button": {
+					"label": "Read more",
+					"icon": ""
+				}
+			}
+		},
+		"card-v4": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet.",
+				"description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia minus culpa commodi.",
+				"buttons": [
+					{
+						"label": "Learn more",
+						"icon": ""
+					},
+					{
+						"label": "Buy",
+						"icon": ""
+					}
+				]
+			}
+		},
+		"card-v5": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet",
+				"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, maiores!",
+				"button": {
+					"label": "Read more",
+					"icon": ""
+				}
+			}
+		},
+		"card-v6": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+				"label": "Label"
+			}
+		},
+		"card-v7": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet.",
+				"label": "Label",
+				"buttons": [
+					{
+						"label": "Share",
+						"icon": ""
+					},
+					{
+						"label": "Like",
+						"icon": ""
+					}
+				]
+			}
+		},
+		"card-v8": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis molestias pariatur voluptate et vel iure.",
+				"label": "Label"
+			}
+		},
+		"card-v9": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, atque.",
+				"label": "Category",
+				"button": {
+					"label": "Read more"
+				}
+			}
+		},
+		"card-v10": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "Almost before we knew it, we had left the ground",
+				"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+				"label": "Category",
+				"buttons": [
+					{
+						"label": "120",
+						"icon": ""
+					},
+					{
+						"label": "Comment",
+						"icon": ""
+					},
+					{
+						"label": "Share",
+						"icon": ""
+					}
+				]
+			}
+		},
+		"alert-card": {
+			"assets": {
+				"images": [],
+				"css": [],
+				"js": []
+			},
+			"content": {
+				"title": "This is an important message",
+				"description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium accusantium maxime voluptatem praesentium neque consectetur delectus debitis quibusdam quisquam at?",
+				"buttons": [
+					{
+						"label": "Learn more",
+						"icon": ""
+					},
+					{
+						"label": "Start free trial",
+						"icon": ""
+					}
+				]
+			}
+		}
+	}
+}
