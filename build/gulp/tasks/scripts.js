@@ -1,5 +1,6 @@
 const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
+const named = require('vinyl-named');
 
 const { glob, task, src, dest, path, paths } = require('../../utils');
 const { WebpackConfig } = require('../../webpack/webpack.config');
@@ -7,7 +8,7 @@ const { WebpackConfig } = require('../../webpack/webpack.config');
 const getEntry = () => {
 	const files = {};
 
-	glob.sync(paths.views('**/*.js'))
+	glob.sync()
 		.filter((file) => /\.(js)$/i.test(file))
 		.map((file) => {
 			files[path.basename(path.dirname(file))] = `${file}`;
@@ -17,19 +18,10 @@ const getEntry = () => {
 };
 
 task('scripts', (done) => {
-	return src('.', { allowEmpty: true })
-		.pipe(
-			webpackStream(
-				{
-					...WebpackConfig,
-					entry: getEntry(),
-					output: {
-						filename: '[name].js',
-					},
-				},
-				webpack,
-				function () {}
-			)
-		)
+	return src([paths.views('**/*.js'), `!${paths._views}/{**/_*,**/_*/**}`], {
+		allowEmpty: true,
+	})
+		.pipe(named())
+		.pipe(webpackStream(WebpackConfig, webpack, function () {}))
 		.pipe(dest(paths.public('js')));
 });
