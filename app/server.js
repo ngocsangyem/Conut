@@ -23,4 +23,6 @@ const listenApp = () => {
 addMiddlewares(app);
 addRoutes(app);
 
-app.listen(config.port, listenApp);
+app.listen(config.port, () =>
+	console.log(`App listen to http://localhost:${config.port}`)
+);

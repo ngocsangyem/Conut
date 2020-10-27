@@ -21,7 +21,7 @@ task(
 	series(
 		'clean',
 		parallel('styles', 'scripts', 'pug:compile', 'copy', 'assets'),
-		// 'browserSync',
-		'watch'
+		'watch',
+		'browserSync'
 	)
 );
