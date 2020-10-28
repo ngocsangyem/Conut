@@ -14,7 +14,15 @@ task('nodemon', function (cb) {
 
 	return nodemon({
 		script: paths.app('server.js'),
-		ignore: ['gulpfile.babel.js', 'node_modules/'],
+		ignore: [
+			'gulpfile.babel.js',
+			'node_modules/',
+			'views/',
+			'@COMPONETS/',
+			'@YEB-COMPONENTS/',
+			'@SITE/',
+			'build/',
+		],
 	}).on('start', function () {
 		if (!started) {
 			cb();

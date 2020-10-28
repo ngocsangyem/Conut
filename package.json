@@ -40,7 +40,7 @@
 		"webpack-stream": "^6.1.0"
 	},
 	"scripts": {
-		"start": "gulp dev"
+		"start": "gulp dev --development"
 	},
 	"repository": {
 		"type": "git",
