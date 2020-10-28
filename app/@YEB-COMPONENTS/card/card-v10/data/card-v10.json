@@ -1,0 +1,26 @@
+{
+	"assets": {
+		"images": [],
+		"css": [],
+		"js": []
+	},
+	"content": {
+		"title": "Almost before we knew it, we had left the ground",
+		"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"label": "Category",
+		"buttons": [
+			{
+				"label": "120",
+				"icon": ""
+			},
+			{
+				"label": "Comment",
+				"icon": ""
+			},
+			{
+				"label": "Share",
+				"icon": ""
+			}
+		]
+	}
+}

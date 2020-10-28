@@ -1,0 +1,21 @@
+{
+	"assets": {
+		"images": [],
+		"css": [],
+		"js": []
+	},
+	"content": {
+		"title": "Lorem ipsum dolor sit amet.",
+		"label": "Label",
+		"buttons": [
+			{
+				"label": "Share",
+				"icon": ""
+			},
+			{
+				"label": "Like",
+				"icon": ""
+			}
+		]
+	}
+}

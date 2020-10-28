@@ -1,0 +1,21 @@
+{
+	"assets": {
+		"images": [],
+		"css": [],
+		"js": []
+	},
+	"content": {
+		"title": "This is an important message",
+		"description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium accusantium maxime voluptatem praesentium neque consectetur delectus debitis quibusdam quisquam at?",
+		"buttons": [
+			{
+				"label": "Learn more",
+				"icon": ""
+			},
+			{
+				"label": "Start free trial",
+				"icon": ""
+			}
+		]
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"assets": {
+		"images": [],
+		"css": [],
+		"js": []
+	},
+	"content": {
+		"title": "Lorem ipsum dolor sit amet",
+		"description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, maiores!",
+		"button": {
+			"label": "Read more",
+			"icon": ""
+		}
+	}
+}

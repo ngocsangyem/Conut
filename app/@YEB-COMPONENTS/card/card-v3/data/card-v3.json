@@ -1,0 +1,15 @@
+{
+	"assets": {
+		"images": [],
+		"css": [],
+		"js": []
+	},
+	"content": {
+		"title": "Lorem ipsum dolor sit amet.",
+		"description": "Label",
+		"button": {
+			"label": "Read more",
+			"icon": ""
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"assets": {
+		"images": [],
+		"css": [],
+		"js": []
+	},
+	"content": {
+		"title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, atque.",
+		"label": "Category",
+		"button": {
+			"label": "Read more"
+		}
+	}
+}
