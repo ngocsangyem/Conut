@@ -57,6 +57,10 @@
 			a {
 				background-color: $neutralShade6;
 				color: $light;
+
+				&::before {
+					background-color: $neutralShade8;
+				}
 			}
 		}
 
@@ -141,14 +145,22 @@
 	}
 
 	&.views {
-		li.is-active {
-			a {
+		li {
+			&:first-child {
+				&.is-active {
+					a {
 
-				&::after,
-				&::before {
-					background-color: $neutralShade8;
+						&::after {
+							background-color: $neutralShade8;
+						}
+
+						&::before {
+							background-color: $light;
+						}
+					}
 				}
 			}
+
 		}
 	}
 }

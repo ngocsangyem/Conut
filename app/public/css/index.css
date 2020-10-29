@@ -266,6 +266,10 @@
   color: #fff;
 }
 
+.page-view-nav li.is-active a::before {
+  background-color: #1c1c1c;
+}
+
 .page-view-nav li:first-child .btn-page-delete {
   opacity: 0;
   visibility: hidden;
@@ -331,8 +335,12 @@
   outline: none;
 }
 
-.page-view-nav.views li.is-active a::after, .page-view-nav.views li.is-active a::before {
+.page-view-nav.views li:first-child.is-active a::after {
   background-color: #1c1c1c;
+}
+
+.page-view-nav.views li:first-child.is-active a::before {
+  background-color: #fff;
 }
 
 .page-view-contents .page-view-content {

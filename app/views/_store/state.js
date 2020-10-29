@@ -1,5 +1,5 @@
 export default {
-	pages: ['index'],
+	pages: ['index', 'about', 'project'],
 	components: [
 		{
 			name: 'Cards',
