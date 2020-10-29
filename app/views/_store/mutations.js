@@ -4,8 +4,8 @@ export default {
 
 		return state;
 	},
-	clearItem(state, payload) {
-		state.items.splice(payload.index, 1);
+	clearPageByIndex(state, payload) {
+		state.pages.splice(payload.index, 1);
 
 		return state;
 	},

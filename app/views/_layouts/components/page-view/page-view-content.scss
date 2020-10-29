@@ -4,6 +4,7 @@
 
 		height: calc(100vh - 7.125rem);
 
+		display: none;
 		overflow-y: auto;
 
 		position: relative;
@@ -18,6 +19,10 @@
 			transform: translate(-50%, -50%);
 
 			color: $light;
+		}
+
+		&.is-active {
+			display: block;
 		}
 	}
 }

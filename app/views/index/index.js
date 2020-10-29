@@ -7,8 +7,9 @@ export class IndexPage {
 	constructor() {
 		const sidepaneInstance = new Sidepane();
 		const pageViewInstance = new PageView();
-		sidepaneInstance.render();
-		pageViewInstance.render();
+
+		sidepaneInstance.init();
+		pageViewInstance.init();
 	}
 
 	static init() {

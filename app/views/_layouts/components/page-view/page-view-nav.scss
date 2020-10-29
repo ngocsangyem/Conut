@@ -29,6 +29,7 @@
 
 	li {
 		position: relative;
+		cursor: pointer;
 
 		&::after,
 		&::before {
@@ -58,8 +59,9 @@
 				background-color: $neutralShade6;
 				color: $light;
 
-				&::before {
-					background-color: $neutralShade8;
+				&::before,
+				&::after {
+					background-color: $light;
 				}
 			}
 		}
@@ -81,6 +83,7 @@
 
 	a {
 		text-decoration: none;
+		// pointer-events: none;
 		display: flex;
 		align-items: center;
 
@@ -119,6 +122,10 @@
 		.fa-file {
 			margin-right: 0.3rem;
 		}
+
+		.btn-page-delete {
+			pointer-events: auto;
+		}
 	}
 
 	.btn-page-delete {
@@ -139,21 +146,30 @@
 		font-size: 1rem;
 		color: $light;
 
+		i {
+			pointer-events: none;
+		}
+
 		&:focus {
 			outline: none;
 		}
 	}
 
-	&.views {
+	&.more-pages {
 		li {
+			&.is-active {
+				a {
+
+					&::before,
+					&::after {
+						background-color: $neutralShade8;
+					}
+				}
+			}
+
 			&:first-child {
 				&.is-active {
 					a {
-
-						&::after {
-							background-color: $neutralShade8;
-						}
-
 						&::before {
 							background-color: $light;
 						}
@@ -161,6 +177,16 @@
 				}
 			}
 
+			&:last-child {
+				&.is-active {
+					a {
+
+						&::after {
+							background-color: $light;
+						}
+					}
+				}
+			}
 		}
 	}
 }

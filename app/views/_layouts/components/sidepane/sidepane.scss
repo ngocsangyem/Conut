@@ -21,6 +21,10 @@
 						content: '\f068';
 					}
 				}
+
+				.component-accordion-list {
+					max-height: 400px;
+				}
 			}
 		}
 
@@ -71,7 +75,8 @@
 		}
 
 		.component-accordion-list {
-			max-height: 400px;
+			max-height: 0;
+			transition: max-height 0.3s ease-in-out;
 
 			overflow-y: auto;
 		}
