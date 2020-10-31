@@ -3,6 +3,8 @@ import store from '../../../_store/index';
 
 import { switchClass } from '../../../_helpers/DOM/switchClass';
 import { hasClass } from '../../../_helpers/DOM/hasClass';
+import { next } from '../../../_helpers/DOM/next';
+import { slideDown } from '../../../_helpers/animation/slideDown';
 
 export default class Sidepane extends Component {
 	constructor() {
@@ -23,7 +25,7 @@ export default class Sidepane extends Component {
 			${store.state.components
 				.map((component) => {
 					return `
-					<div class="component-accordion">
+					<div class="component-accordion ${component.isOpen ? 'is-active' : ''}">
 						<h4 class="component-accordion-title">
 							<span class="component-accordion-name">${component.name}</span>
 							<span class="component-accordion-count">${component.list.length}</span>
@@ -61,14 +63,15 @@ export default class Sidepane extends Component {
 	}
 
 	openAccordion(accordionItems, accordionTitles) {
-		accordionTitles.forEach((title) => {
+		accordionTitles.forEach((title, index) => {
 			const accordion = title.parentNode;
 			title.addEventListener('click', () => {
-				if (hasClass(accordion, 'is-active')) {
-					accordion.classList.remove('is-active');
-				} else {
-					switchClass(accordion, accordionItems, 'is-active');
-				}
+				// if (hasClass(accordion, 'is-active')) {
+				// 	accordion.classList.remove('is-active');
+				// } else {
+				// 	switchClass(accordion, accordionItems, 'is-active');
+				// }
+				store.dispatch('toggleAccordion', { index });
 			});
 		});
 	}

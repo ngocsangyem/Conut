@@ -3,6 +3,7 @@ export default {
 	components: [
 		{
 			name: 'Cards',
+			isOpen: false,
 			list: [
 				{
 					name: 'card-v1',
@@ -58,6 +59,7 @@ export default {
 		},
 		{
 			name: 'Shops',
+			isOpen: false,
 			list: [
 				{
 					name: 'card-v1',

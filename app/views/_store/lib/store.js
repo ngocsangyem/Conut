@@ -1,8 +1,6 @@
-import PubSub from './lib/pubsub';
-
 export default class Store {
 	constructor(params) {
-		let self = this;
+		const self = this;
 
 		// Add some default objects to hold our actions, mutations and state
 		self.actions = {};
@@ -12,8 +10,8 @@ export default class Store {
 		// A status enum to set during actions and mutations
 		self.status = 'resting';
 
-		// Attach our PubSub module as an `events` element
-		self.events = new PubSub();
+		// We store callbacks for when the state changes in here
+		self.callbacks = [];
 
 		// Look in the passed params object for actions and mutations
 		// that might have been passed in
@@ -33,16 +31,9 @@ export default class Store {
 				// Set the value as we would normally
 				state[key] = value;
 
-				// Trace out to the console. This will be grouped by the related action
-				console.log(`stateChange: ${key}: ${value}`);
-
-				// Publish the change event for the components that are listening
-				self.events.publish('stateChange', self.state);
-
-				// Give the user a little telling off if they set a value directly
-				if (self.status !== 'mutation') {
-					console.warn(`You should use a mutation to set ${key}`);
-				}
+				// Fire off our callback processor because if there's listeners,
+				// they're going to want to know that something has changed
+				self.processCallbacks(self.state);
 
 				// Reset the status ready for the next operation
 				self.status = 'resting';
@@ -62,17 +53,14 @@ export default class Store {
 	 * @memberof Store
 	 */
 	dispatch(actionKey, payload) {
-		let self = this;
+		const self = this;
 
 		// Run a quick check to see if the action actually exists
 		// before we try to run it
 		if (typeof self.actions[actionKey] !== 'function') {
-			console.error(`Action "${actionKey} doesn't exist.`);
+			console.error(`Action "${actionKey}" doesn't exist.`);
 			return false;
 		}
-
-		// Create a console group which will contain the logs from our Proxy etc
-		console.groupCollapsed(`ACTION: ${actionKey}`);
 
 		// Let anything that's watching the status know that we're dispatching an action
 		self.status = 'action';
@@ -80,12 +68,8 @@ export default class Store {
 		// Actually call the action and pass it the Store context and whatever payload was passed
 		self.actions[actionKey](self, payload);
 
-		// Close our console group to keep things nice and neat
-		console.groupEnd();
-
 		return true;
 	}
-
 	/**
 	 * Look for a mutation and modify the state object
 	 * if that mutation exists by calling it
@@ -96,7 +80,7 @@ export default class Store {
 	 * @memberof Store
 	 */
 	commit(mutationKey, payload) {
-		let self = this;
+		const self = this;
 
 		// Run a quick check to see if this mutation actually exists
 		// before trying to run it
@@ -113,6 +97,50 @@ export default class Store {
 
 		// Merge the old and new together to create a new state and set it
 		self.state = Object.assign(self.state, newState);
+
+		return true;
+	}
+
+	/**
+	 * Fire off each callback that's run whenever the state changes
+	 * We pass in some data as the one and only parameter.
+	 * Returns a boolean depending if callbacks were found or not
+	 *
+	 * @param {object} data
+	 * @returns {boolean}
+	 */
+	processCallbacks(data) {
+		const self = this;
+
+		if (!self.callbacks.length) {
+			return false;
+		}
+
+		// We've got callbacks, so loop each one and fire it off
+		self.callbacks.forEach((callback) => callback(data));
+
+		return true;
+	}
+
+	/**
+	 * Allow an outside entity to subscribe to state changes with a valid callback.
+	 * Returns boolean based on wether or not the callback was added to the collection
+	 *
+	 * @param {function} callback
+	 * @returns {boolean}
+	 */
+	subscribe(callback) {
+		const self = this;
+
+		if (typeof callback !== 'function') {
+			console.error(
+				'You can only subscribe to Store changes with a valid function'
+			);
+			return false;
+		}
+
+		// A valid function, so it belongs in our collection
+		self.callbacks.push(callback);
 
 		return true;
 	}

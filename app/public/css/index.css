@@ -115,23 +115,11 @@
   overflow-y: auto;
 }
 
-.pages-edit-sidepane .component-accordions {
+.pages-edit-sidepane .component-accordion {
   color: #fff;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion.is-active .component-accordion-title {
-  background-color: rgba(66, 66, 66, 0.5);
-}
-
-.pages-edit-sidepane .component-accordions .component-accordion.is-active .component-accordion-title::before {
-  content: '\f068';
-}
-
-.pages-edit-sidepane .component-accordions .component-accordion.is-active .component-accordion-list {
-  max-height: 400px;
-}
-
-.pages-edit-sidepane .component-accordions .component-accordion-title {
+.pages-edit-sidepane .component-accordion .component-accordion-title {
   position: relative;
   cursor: pointer;
   padding: 0.5rem;
@@ -141,11 +129,11 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-title span {
+.pages-edit-sidepane .component-accordion .component-accordion-title span {
   font-size: 0.8rem;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-title span.component-accordion-count {
+.pages-edit-sidepane .component-accordion .component-accordion-title span.component-accordion-count {
   display: inline-block;
   margin-left: 0.3rem;
   padding: 0.3rem;
@@ -153,7 +141,7 @@
   background-color: #8e909d;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-title::before {
+.pages-edit-sidepane .component-accordion .component-accordion-title::before {
   content: '\f067';
   font-family: 'Font Awesome 5 Pro';
   font-weight: 300;
@@ -164,30 +152,30 @@
   transform: translateY(-50%);
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-title:hover {
+.pages-edit-sidepane .component-accordion .component-accordion-title:hover {
   background-color: rgba(66, 66, 66, 0.5);
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-list {
-  max-height: 0;
-  transition: max-height 0.3s ease-in-out;
+.pages-edit-sidepane .component-accordion .component-accordion-list {
+  display: none;
+  animation: close ease-in-out 400ms forwards;
   overflow-y: auto;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-item {
+.pages-edit-sidepane .component-accordion .component-accordion-item {
   cursor: move;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-item figure {
+.pages-edit-sidepane .component-accordion .component-accordion-item figure {
   position: relative;
   margin: 0.5rem;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-item img {
+.pages-edit-sidepane .component-accordion .component-accordion-item img {
   width: 100%;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-item figcaption {
+.pages-edit-sidepane .component-accordion .component-accordion-item figcaption {
   position: absolute;
   top: 0;
   right: 0;
@@ -198,12 +186,40 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-item a {
+.pages-edit-sidepane .component-accordion .component-accordion-item a {
   color: #fff;
 }
 
-.pages-edit-sidepane .component-accordions .component-accordion-item:hover figcaption {
+.pages-edit-sidepane .component-accordion .component-accordion-item:hover figcaption {
   opacity: 1;
+}
+
+.pages-edit-sidepane .component-accordion.is-active .component-accordion-title {
+  background-color: rgba(66, 66, 66, 0.5);
+}
+
+.pages-edit-sidepane .component-accordion.is-active .component-accordion-title::before {
+  content: '\f068';
+}
+
+.pages-edit-sidepane .component-accordion.is-active .component-accordion-list {
+  display: block;
+  animation: open ease-in-out 400ms forwards;
+}
+
+@keyframes open {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 400px;
+  }
+}
+
+@keyframes close {
+  0% {
+    max-height: 0;
+  }
 }
 
 .pages-edit-view {
