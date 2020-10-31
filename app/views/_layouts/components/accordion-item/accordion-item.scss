@@ -1,0 +1,59 @@
+.accordion-item {
+	color: $light;
+
+	.accordion-item-title {
+		position: relative;
+		cursor: pointer;
+
+		padding: 0.5rem;
+
+		display: flex;
+		align-items: center;
+
+		color: $light;
+		transition: background-color 0.3s ease-in-out;
+
+		span {
+			font-size: 0.8rem;
+
+			&.accordion-component-count {
+				display: inline-block;
+
+				margin-left: 0.3rem;
+
+				padding: 0.3rem;
+				border-radius: 5px;
+
+				background-color: $accentShade3;
+			}
+		}
+
+		&::before {
+			content: '\f067';
+
+			font-family: 'Font Awesome 5 Pro';
+			font-weight: 300;
+			font-size: 1rem;
+
+			position: absolute;
+			top: 50%;
+			right: 0.5rem;
+
+			transform: translateY(-50%);
+		}
+
+		&:hover {
+			background-color: rgba($neutralShade7, 0.5);
+		}
+	}
+
+	&.is-active {
+		.accordion-item-title {
+			background-color: rgba($neutralShade7, 0.5);
+
+			&::before {
+				content: '\f068';
+			}
+		}
+	}
+}

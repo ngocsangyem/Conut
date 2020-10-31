@@ -1,12 +1,16 @@
 @import '../../styles/abstracts/mixins';
 @import '../../styles/base/variables';
 
-@import '../_layouts/components/project-name/project-name';
+@import '../_layouts/components/project-input/project-input';
 @import '../_layouts/components/header/header';
-@import '../_layouts/components/sidepane/sidepane';
+@import '../_layouts/components/sidepanel/sidepanel';
+@import '../_layouts/components/accordion-list/accordion-list';
+@import '../_layouts/components/accordion-item/accordion-item';
+@import '../_layouts/components/component-list/component-list';
+@import '../_layouts/components/component-item/component-item';
 @import '../_layouts/components/page-view/page-view';
-@import '../_layouts/components/page-view/page-view-nav';
-@import '../_layouts/components/page-view/page-view-content';
+@import '../_layouts/components/page-view-nav/page-view-nav';
+@import '../_layouts/components/page-view-content/page-view-content';
 
 .pages-edit-main {
 	height: calc(100vh - 4.3125rem);

@@ -1,0 +1,39 @@
+.component-list {
+	.component-item {
+		cursor: move;
+
+		figure {
+			position: relative;
+
+			margin: 0.5rem;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		figcaption {
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			font-size: 0.8rem;
+
+			padding: 0.5rem;
+
+			background-color: $accentColor;
+			opacity: 0;
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		a {
+			color: $light;
+		}
+
+		&:hover {
+			figcaption {
+				opacity: 1;
+			}
+		}
+	}
+}
