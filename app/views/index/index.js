@@ -1,13 +1,23 @@
 import AccordionList from '../_layouts/components/accordion-list/accordion-list';
+import PageViewTabs from '../_layouts/components/page-view-tabs/page-view-tabs';
 import ComponentStore from '../_store/component-store';
 
 export class IndexPage {
 	constructor(el) {
-		this.render(el);
-		new ComponentStore(el);
-		new AccordionList(document.querySelector('.pages-edit-sidepanel'));
+		this.App(el);
+	}
 
-		el.accordionStore.load;
+	App(el) {
+		this.render(el);
+		const store = new ComponentStore(el);
+		new AccordionList(document.querySelector('.pages-edit-sidepanel'));
+		new PageViewTabs(document.querySelector('.js-page-edit-tabs'));
+
+		el.addEventListener('accordionsData', (event) => {
+			console.log('IndexPage -> App -> event', event.detail);
+		});
+
+		store.load();
 	}
 
 	render(el) {

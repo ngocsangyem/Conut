@@ -92,13 +92,7 @@ export default class ComponentStore {
 	storeTimeout = null;
 
 	constructor(el) {
-		const _self = this;
-
 		this.el = el;
-		el.accordionStore = {
-			dispatch: _self.dispatch,
-			load: _self.load(),
-		};
 	}
 
 	store() {
@@ -114,24 +108,23 @@ export default class ComponentStore {
 	}
 
 	dispatch(next) {
+		console.log('ComponentStore -> dispatch -> next', next);
 		Object.assign(this.state, next);
 		this.store();
 
 		this.el.dispatchEvent(
 			new CustomEvent('accordionsData', {
 				detail: this.state,
-				bubbles: false,
+				bubbles: true,
 			})
 		);
 	}
 
 	load() {
-		if (!localStorage || !localStorage.accordions) {
-			console.log(this);
+		if (localStorage.accordions === undefined) {
 			this.dispatch(this.state);
 			return;
 		}
-
 		try {
 			this.dispatch(JSON.parse(localStorage.accordions));
 		} catch (err) {
