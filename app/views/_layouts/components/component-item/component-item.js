@@ -1,16 +1,28 @@
 export default class ComponentItem {
-	render(component) {
-		return `
-		<div class="component-item">
+	state = {
+		id: '',
+		name: '',
+		image: '',
+	};
+
+	constructor(el) {
+		this.el = el;
+	}
+
+	render() {
+		this.el.innerHTML = `
+		<div class="component-item" data-key="${state.component.id}">
 			<figure>
-				<img
-					src="${component.image}"
-					alt="${component.name}">
+				<img src="${state.component.image}" alt="${state.component.name}">
 				<figcaption>
-					<a href="/" target="_blank">${component.name}</a>
+					<a href="/" target="_blank">${state.component.name}</a>
 				</figcaption>
 			</figure>
 		</div>
 		`;
+	}
+
+	update(next) {
+		Object.assign(this.state, next);
 	}
 }

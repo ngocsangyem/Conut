@@ -3,25 +3,34 @@ import PageViewTabs from '../_layouts/components/page-view-tabs/page-view-tabs';
 import ComponentStore from '../_store/component-store';
 
 export class IndexPage {
+	state = {
+		accordions: [],
+	};
+
 	constructor(el) {
-		this.App(el);
+		this.el = el;
+		this.render();
+		this.accordionList = new AccordionList(
+			document.querySelector('.pages-edit-sidepanel')
+		);
+		this.pageViewTabs = new PageViewTabs(
+			document.querySelector('.js-page-edit-tabs')
+		);
+		this.App();
 	}
 
-	App(el) {
-		this.render(el);
-		const store = new ComponentStore(el);
-		new AccordionList(document.querySelector('.pages-edit-sidepanel'));
-		new PageViewTabs(document.querySelector('.js-page-edit-tabs'));
+	App() {
+		const store = new ComponentStore(this.el);
 
-		el.addEventListener('accordionsData', (event) => {
-			console.log('IndexPage -> App -> event', event.detail);
+		this.el.addEventListener('accordionsData', (event) => {
+			this.update(event.detail);
 		});
 
 		store.load();
 	}
 
-	render(el) {
-		el.innerHTML = `
+	render() {
+		this.el.innerHTML = `
 		<header class="header-editor">
 			<div class="container">
 				<nav class="navbar">
@@ -87,6 +96,14 @@ export class IndexPage {
 			</div>
 		</section>
 		`;
+	}
+
+	update(next) {
+		Object.assign(this.state, next);
+
+		this.accordionList.update({
+			accordions: this.state.accordions,
+		});
 	}
 
 	static init() {

@@ -1,9 +1,14 @@
-const generateID = function (length) {
-	const chars = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'];
-	// and then just do:
-	return [...Array(length)].map(
-		(i) => chars[(Math.random() * chars.length) | 0]
-	).join``;
+const generateId = (length) => {
+	var result = '';
+	var characters =
+		'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	var charactersLength = characters.length;
+	for (var i = 0; i < length; i++) {
+		result += characters.charAt(
+			Math.floor(Math.random() * charactersLength)
+		);
+	}
+	return result;
 };
 
-module.exports = generateID;
+module.exports = generateId;
