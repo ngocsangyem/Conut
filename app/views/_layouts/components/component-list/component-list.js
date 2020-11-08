@@ -40,7 +40,7 @@ export default class ComponentList {
 				this.componentItem = new ComponentItem(child);
 			}
 
-			this.componentItem.update({ component });
+			this.componentItem.update({ ...component });
 			return child;
 		});
 

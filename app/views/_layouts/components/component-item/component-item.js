@@ -7,22 +7,28 @@ export default class ComponentItem {
 
 	constructor(el) {
 		this.el = el;
+		this.render();
 	}
 
 	render() {
 		this.el.innerHTML = `
-		<div class="component-item" data-key="${state.component.id}">
-			<figure>
-				<img src="${state.component.image}" alt="${state.component.name}">
-				<figcaption>
-					<a href="/" target="_blank">${state.component.name}</a>
-				</figcaption>
-			</figure>
-		</div>
+		<figure>
+			<img class="component-item-name" src="" alt="">
+			<figcaption>
+				<a class="component-item-link" href="/" target="_blank"></a>
+			</figcaption>
+		</figure>
 		`;
+
+		this.componentImg = this.el.querySelector('.component-item-name');
+		this.componentLink = this.el.querySelector('.component-item-link');
 	}
 
 	update(next) {
 		Object.assign(this.state, next);
+
+		this.componentImg.setAttribute('src', this.state.image);
+		this.componentImg.setAttribute('alt', this.state.name);
+		this.componentLink.innerHTML = this.state.name;
 	}
 }

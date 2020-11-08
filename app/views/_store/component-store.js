@@ -1,67 +1,80 @@
+import { generateId } from '../_helpers/generateId';
+
 export default class ComponentStore {
 	state = {
-		pages: [],
+		pages: [
+			{
+				name: 'index',
+				id: generateId(5),
+				components: [],
+			},
+			{
+				name: 'about',
+				id: generateId(5),
+				components: [],
+			},
+		],
 		accordions: [
 			{
 				name: 'Cards',
-				id: 'QWERTYUI',
+				id: generateId(5),
 				components: [
 					{
-						id: '4VpF7',
+						id: generateId(5),
 						name: 'card-v1',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'XeriC',
+						id: generateId(5),
 						name: 'card-v2',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'xBtpl',
+						id: generateId(5),
 						name: 'card-v3',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'zJnlS',
+						id: generateId(5),
 						name: 'card-v4',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'ELKGS',
+						id: generateId(5),
 						name: 'card-v5',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'q2KH8',
+						id: generateId(5),
 						name: 'card-v6',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: '2sqjH',
+						id: generateId(5),
 						name: 'card-v7',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'DphUF',
+						id: generateId(5),
 						name: 'card-v8',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'Dl8zv',
+						id: generateId(5),
 						name: 'card-v9',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'QjyNL',
+						id: generateId(5),
 						name: 'card-v10',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
@@ -70,34 +83,34 @@ export default class ComponentStore {
 			},
 			{
 				name: 'Shops',
-				id: 'ASDFGHJK',
+				id: generateId(5),
 				components: [
 					{
-						id: 'jDF6y',
+						id: generateId(5),
 						name: 'card-v1',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: '2KjT9',
+						id: generateId(5),
 						name: 'card-v2',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'DXaHL',
+						id: generateId(5),
 						name: 'card-v3',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'Sioeo',
+						id: generateId(5),
 						name: 'card-v4',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
 					},
 					{
-						id: 'w6AmR',
+						id: generateId(5),
 						name: 'card-v5',
 						image:
 							'https://images.unsplash.com/photo-1603444190665-3f3810ba7f62?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',

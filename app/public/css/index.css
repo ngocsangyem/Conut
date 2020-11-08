@@ -215,12 +215,6 @@
   opacity: 1;
 }
 
-.pages-edit-view {
-  --circle-size: 1.25rem;
-  width: calc(100vw - 14.375rem);
-  position: relative;
-}
-
 .page-view-nav {
   margin-left: var(--circle-size);
   margin-top: 0.3125rem;
@@ -370,7 +364,7 @@
   background-color: #fff;
 }
 
-.page-view-contents .page-view-content {
+.page-view-contents .page-view-content-item {
   background-color: #2d2d2d;
   height: calc(100vh - 7.125rem);
   display: none;
@@ -378,7 +372,7 @@
   position: relative;
 }
 
-.page-view-contents .page-view-content::before {
+.page-view-contents .page-view-content-item::before {
   content: 'Drag and Drop your component in here';
   position: absolute;
   top: 50%;
@@ -387,7 +381,7 @@
   color: #fff;
 }
 
-.page-view-contents .page-view-content.is-active {
+.page-view-contents .page-view-content-item.is-active {
   display: block;
 }
 
@@ -395,6 +389,12 @@
   height: calc(100vh - 4.3125rem);
   display: flex;
   width: 100%;
+}
+
+.pages-edit-view {
+  --circle-size: 1.25rem;
+  width: calc(100vw - 14.375rem);
+  position: relative;
 }
 
 /*# sourceMappingURL=index.css.map */

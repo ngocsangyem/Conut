@@ -8,7 +8,6 @@
 @import '../_layouts/components/accordion-item/accordion-item';
 @import '../_layouts/components/component-list/component-list';
 @import '../_layouts/components/component-item/component-item';
-@import '../_layouts/components/page-view-tabs/page-view-tabs';
 @import '../_layouts/components/page-view-nav/page-view-nav';
 @import '../_layouts/components/page-view-contents/page-view-contents';
 
@@ -18,4 +17,12 @@
 	display: flex;
 
 	width: 100%;
+}
+
+.pages-edit-view {
+	--circle-size: 1.25rem;
+
+	width: calc(100vw - 14.375rem);
+
+	position: relative;
 }

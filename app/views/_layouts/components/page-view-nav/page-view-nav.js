@@ -1,23 +1,65 @@
+import PageViewNavItem from '../page-view-nav-item/page-view-nav-item';
+import { addClass } from '../../../_helpers/DOM';
 export default class PageViewNav {
-	render(pages) {
-		return `
+	state = {
+		pages: [],
+	};
+
+	constructor(el) {
+		this.el = el;
+		this.render();
+	}
+
+	render() {
+		this.el.innerHTML = `
 			<div class="page-view-nav">
-				<ul>
-					${pages.map((page, index) => {
-						return `
-							<li class="${index === 0 ? 'is-active' : ''}" data-page="${page}">
-								<a class="page page-${page}" id="page-${page}" href="javascript:void(0)" data-tab="${index}">
-									<i class="fad fa-file"></i>
-									<span>${page}.html</span>
-									<button class="btn-page-delete" type="button">
-										<i class="fal fa-times"></i>
-									</button>
-								</a>
-							</li>
-						`;
-					})}
+				<ul class="nav-list">
 				</ul>
 			</div>
 		`;
+	}
+
+	update(next) {
+		Object.assign(this.state, next);
+
+		if (this.state.pages.length > 1) {
+			addClass(this.el.querySelector('.page-view-nav'), 'more-pages');
+		}
+
+		const container = this.el.querySelector('.page-view-nav ul');
+		const obsolete = new Set(container.children);
+		const childrenByKey = new Map();
+
+		obsolete.forEach((child) => {
+			childrenByKey.set(child.getAttribute('data-key'), child);
+		});
+
+		const children = this.state.pages.map((page, index) => {
+			let child = childrenByKey.get(page.id);
+
+			if (child) {
+				obsolete.delete(child);
+			} else {
+				child = document.createElement('li');
+				child.className =
+					index === 0 ? 'nav-item is-active' : 'nav-item';
+				child.setAttribute('data-key', page.id);
+				child.setAttribute('data-page', page.name);
+				this.pageViewNavItem = new PageViewNavItem(child);
+			}
+
+			this.pageViewNavItem.update({ ...page });
+			return child;
+		});
+
+		obsolete.forEach((child) => {
+			this.el.removeChild(child);
+		});
+
+		children.forEach((child, index) => {
+			if (child !== container.children[index]) {
+				container.insertBefore(child, container.children[index]);
+			}
+		});
 	}
 }

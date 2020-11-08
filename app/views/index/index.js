@@ -1,10 +1,12 @@
 import AccordionList from '../_layouts/components/accordion-list/accordion-list';
-import PageViewTabs from '../_layouts/components/page-view-tabs/page-view-tabs';
+import PageViewNav from '../_layouts/components/page-view-nav/page-view-nav';
+import PageViewContents from '../_layouts/components/page-view-contents/page-view-contents';
 import ComponentStore from '../_store/component-store';
 
 export class IndexPage {
 	state = {
 		accordions: [],
+		pages: [],
 	};
 
 	constructor(el) {
@@ -13,7 +15,10 @@ export class IndexPage {
 		this.accordionList = new AccordionList(
 			document.querySelector('.pages-edit-sidepanel')
 		);
-		this.pageViewTabs = new PageViewTabs(
+		this.pageViewNav = new PageViewNav(
+			document.querySelector('.js-page-edit-tabs')
+		);
+		this.pageViewContents = new PageViewContents(
 			document.querySelector('.js-page-edit-tabs')
 		);
 		this.App();
@@ -62,7 +67,8 @@ export class IndexPage {
 			<aside class="pages-edit-sidepanel">
 			</aside>
 			<div class="pages-edit-view">
-				<div class="page-edit-tabs js-page-edit-tabs"></div>
+				<div class="page-edit-tabs js-page-edit-tabs">
+				</div>
 			</div>
 		</section>
 		<section class="project-input position-relative padding-y-xl">
@@ -72,11 +78,17 @@ export class IndexPage {
 						<div class="col-2"></div>
 						<div class="col-8">
 							<div class="site-logo margin-bottom-sm">
-								<figure><img src="/static/images/donut_logo.svg" alt="alt"></figure>
+								<figure>
+									<img src="/static/images/donut_logo.svg" alt="logo">
+								</figure>
 							</div>
-							<div class="input-group"><input class="form-control flex-grow" id="projectName" type="text"
-									name="projectName" placeholder="Enter your project's name"><button
-									class="margin-left-sm btn btn--primary">Let go</button></div>
+							<div class="input-group">
+								<input class="form-control flex-grow" id="projectName" type="text"
+									name="projectName" placeholder="Enter your project's name">
+								<button class="margin-left-sm btn btn--primary">
+									Let go
+								</button>
+							</div>
 						</div>
 						<div class="col-2"></div>
 					</div>
@@ -103,6 +115,12 @@ export class IndexPage {
 
 		this.accordionList.update({
 			accordions: this.state.accordions,
+		});
+		this.pageViewNav.update({
+			pages: this.state.pages,
+		});
+		this.pageViewContents.update({
+			pages: this.state.pages,
 		});
 	}
 
