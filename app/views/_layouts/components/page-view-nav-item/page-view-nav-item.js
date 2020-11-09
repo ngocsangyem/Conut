@@ -39,8 +39,8 @@ export default class PageViewNavItem {
 		const name = this.state.name;
 
 		addClass(this.pageLink, `nav-link-${name}`);
-		this.pageLink.id = `nav-link-${name}`;
 		this.pageLink.setAttribute('data-tab', name);
+		this.pageLink.setAttribute('data-id', this.state.id);
 		this.pageName.innerText = `${name}.html`;
 	}
 
@@ -48,6 +48,9 @@ export default class PageViewNavItem {
 		this.el
 			.querySelector('.nav-link')
 			.addEventListener('click', this.toggleTab);
+		this.el
+			.querySelector('.btn-page-delete')
+			.addEventListener('click', this.removePage.bind(this));
 	}
 
 	toggleTab(event) {
@@ -73,5 +76,20 @@ export default class PageViewNavItem {
 				'is-active'
 			);
 		}
+	}
+
+	removePage(event) {
+		const target = event.target;
+		const navLink = target.parentNode;
+		const pageId = navLink.getAttribute('data-id');
+
+		this.el.dispatchEvent(
+			new CustomEvent('deletePage', {
+				detail: {
+					id: pageId,
+				},
+				bubbles: true,
+			})
+		);
 	}
 }

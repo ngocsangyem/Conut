@@ -45,7 +45,7 @@ export default class ComponentList {
 		});
 
 		obsolete.forEach((child) => {
-			this.el.removeChild(child);
+			container.removeChild(child);
 		});
 
 		children.forEach((child, index) => {

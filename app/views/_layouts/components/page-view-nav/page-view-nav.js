@@ -1,5 +1,5 @@
 import PageViewNavItem from '../page-view-nav-item/page-view-nav-item';
-import { addClass } from '../../../_helpers/DOM';
+import { addClass, removeClass } from '../../../_helpers/DOM';
 export default class PageViewNav {
 	state = {
 		pages: [],
@@ -24,6 +24,8 @@ export default class PageViewNav {
 
 		if (this.state.pages.length > 1) {
 			addClass(this.el.querySelector('.page-view-nav'), 'more-pages');
+		} else {
+			removeClass(this.el.querySelector('.page-view-nav'), 'more-pages');
 		}
 
 		const container = this.el.querySelector('.page-view-nav ul');
@@ -39,6 +41,7 @@ export default class PageViewNav {
 
 			if (child) {
 				obsolete.delete(child);
+				addClass(child, 'is-active');
 			} else {
 				child = document.createElement('li');
 				child.className =
@@ -53,7 +56,7 @@ export default class PageViewNav {
 		});
 
 		obsolete.forEach((child) => {
-			this.el.removeChild(child);
+			container.removeChild(child);
 		});
 
 		children.forEach((child, index) => {

@@ -1,11 +1,5 @@
-{
-	/* <div class="page-view-content ${
-							index === 0 ? 'is-active' : ''
-						}" data-content="${page}">
-							
-						</div> */
-}
 import PageViewContentItem from '../page-view-content-item/page-view-content-item';
+import { addClass } from '../../../_helpers/DOM';
 export default class PageViewContents {
 	state = {
 		pages: [],
@@ -39,7 +33,9 @@ export default class PageViewContents {
 
 			if (child) {
 				obsolete.delete(child);
+				addClass(child, 'is-active');
 			} else {
+				console.log('2');
 				child = document.createElement('div');
 				child.className =
 					index === 0
@@ -55,7 +51,7 @@ export default class PageViewContents {
 		});
 
 		obsolete.forEach((child) => {
-			this.el.removeChild(child);
+			container.removeChild(child);
 		});
 
 		children.forEach((child, index) => {

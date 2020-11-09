@@ -123,6 +123,17 @@ export default class ComponentStore {
 
 	constructor(el) {
 		this.el = el;
+		this.handleEvents();
+	}
+
+	handleEvents() {
+		this.el.addEventListener('deletePage', (event) => {
+			const id = event.detail.id;
+
+			this.dispatch({
+				pages: this.state.pages.filter((page) => page.id !== id),
+			});
+		});
 	}
 
 	store() {
