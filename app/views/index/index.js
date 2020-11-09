@@ -1,7 +1,8 @@
 import AccordionList from '../_layouts/components/accordion-list/accordion-list';
 import PageViewNav from '../_layouts/components/page-view-nav/page-view-nav';
 import PageViewContents from '../_layouts/components/page-view-contents/page-view-contents';
-import ComponentStore from '../_store/component-store';pageimport ProjectInput from '../_layouts/components/project-input/project-input';
+import ComponentStore from '../_store/component-store';
+import ProjectInput from '../_layouts/components/project-input/project-input';
 
 export class IndexPage {
 	state = {
