@@ -22,7 +22,10 @@ export default class PageViewNavItem {
 		this.el.innerHTML = `
 			<a class="nav-link" href="javascript:void(0)">
 				<i class="fad fa-file"></i>
-				<span></span>
+				<div class="page-title">
+					<span class="page-name"></span>
+					<span class="page-extension">.html</span>
+				</div>
 				<button class="btn-page-delete" type="button">
 					<i class="fal fa-times"></i>
 				</button>
@@ -30,7 +33,7 @@ export default class PageViewNavItem {
 		`;
 
 		this.pageLink = this.el.querySelector('.nav-link');
-		this.pageName = this.el.querySelector('.nav-link span');
+		this.pageName = this.el.querySelector('.nav-link .page-name');
 	}
 
 	update(next) {
@@ -41,7 +44,7 @@ export default class PageViewNavItem {
 		addClass(this.pageLink, `nav-link-${name}`);
 		this.pageLink.setAttribute('data-tab', name);
 		this.pageLink.setAttribute('data-id', this.state.id);
-		this.pageName.innerText = `${name}.html`;
+		this.pageName.innerText = `${name}`;
 	}
 
 	handleEvents() {
@@ -63,11 +66,11 @@ export default class PageViewNavItem {
 				parents(this, '.js-page-edit-tabs')[0],
 				'page-view-content-item'
 			);
-			const parent = this.parentNode;
+			const navItem = this.parentNode;
 			const tabName = this.getAttribute('data-tab');
 
 			// switch active class between nav
-			switchClass(parent, tabNaves, 'is-active');
+			switchClass(navItem, tabNaves, 'is-active');
 			switchClass(
 				document.querySelector(
 					`.page-view-content-item[data-content=${tabName}]`

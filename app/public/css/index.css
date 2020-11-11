@@ -222,6 +222,7 @@
 
 .page-view-nav ul {
   display: flex;
+  overflow-y: auto;
 }
 
 .page-view-nav li:last-child::after,
@@ -350,6 +351,10 @@
 
 .page-view-nav .btn-page-delete:focus {
   outline: none;
+}
+
+.page-view-nav .page-title {
+  display: flex;
 }
 
 .page-view-nav.more-pages li.is-active a::before, .page-view-nav.more-pages li.is-active a::after {
