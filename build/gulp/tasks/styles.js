@@ -30,7 +30,7 @@ const postCssPlugins = [
 
 task('styles', () => {
 	return src([
-		paths.views('**/*.scss'),
+		paths.views('pages/**/*.scss'),
 		`!${paths.views('{**/_*,**/_*/**}')}`,
 	])
 		.pipe(

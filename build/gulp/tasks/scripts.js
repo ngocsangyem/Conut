@@ -18,7 +18,7 @@ const getEntry = () => {
 };
 
 task('scripts', (done) => {
-	return src([paths.views('**/*.js'), `!${paths._views}/{**/_*,**/_*/**}`], {
+	return src([paths.views('pages/**/*.js'), `!${paths._views}/{**/_*,**/_*/**}`], {
 		allowEmpty: true,
 	})
 		.pipe(named())
