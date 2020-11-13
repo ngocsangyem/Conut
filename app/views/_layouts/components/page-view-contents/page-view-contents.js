@@ -36,7 +36,6 @@ export default class PageViewContents {
 				// Always set active class for first tab when delete page
 				addClass(container.children[0], 'is-active');
 			} else {
-				console.log('2');
 				child = document.createElement('div');
 				child.className =
 					index === 0

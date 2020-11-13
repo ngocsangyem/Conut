@@ -1,3 +1,5 @@
+import { Sortable } from 'sortablejs';
+
 import ComponentItem from '../component-item/component-item';
 
 export default class ComponentList {
@@ -8,6 +10,7 @@ export default class ComponentList {
 	constructor(el) {
 		this.el = el;
 		this.render();
+		this.handleDragDrop();
 	}
 
 	render() {
@@ -15,6 +18,8 @@ export default class ComponentList {
 			'beforeend',
 			'<div class="component-list js-component-list"></div>'
 		);
+
+		this.componentList = this.el.querySelector('.js-component-list')
 	}
 
 	update(next) {
@@ -52,6 +57,12 @@ export default class ComponentList {
 			if (child !== container.children[index]) {
 				container.insertBefore(child, container.children[index]);
 			}
+		});
+	}
+
+	handleDragDrop() {
+		const sortable = Sortable.create(this.componentList, {
+			// sort: false,
 		});
 	}
 }
