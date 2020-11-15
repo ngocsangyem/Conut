@@ -10,7 +10,9 @@ import {
 
 export default class AccordionItem {
 	state = {
-		accordion: null,
+		name: '',
+		id: '',
+		list: {},
 	};
 
 	constructor(el) {
@@ -36,13 +38,12 @@ export default class AccordionItem {
 
 	update(next) {
 		Object.assign(this.state, next);
+		console.log('AccordionItem -> update -> next', next);
 
-		this.accordionItemName.innerText = this.state.accordion.name;
-		this.accordionItemCount.innerText = this.state.accordion.components.length;
+		this.accordionItemName.innerText = this.state.name;
+		this.accordionItemCount.innerText = Object.keys(this.state.list).length;
 
-		this.componentList.update({
-			components: this.state.accordion.components,
-		});
+		this.componentList.update({ list: this.state.list });
 	}
 
 	handleEvents() {

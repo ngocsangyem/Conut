@@ -2,7 +2,7 @@ import AccordionItem from '../accordion-item/accordion-item';
 
 export default class AccordionList {
 	state = {
-		accordions: [],
+		components: {},
 	};
 
 	constructor(el) {
@@ -20,6 +20,7 @@ export default class AccordionList {
 	update(next) {
 		Object.assign(this.state, next);
 
+		const accordionList = this.state.components;
 		const obsolete = new Set(this.el.children);
 		const childrenByKey = new Map();
 
@@ -27,7 +28,8 @@ export default class AccordionList {
 			childrenByKey.set(child.getAttribute('data-key'), child);
 		});
 
-		let children = this.state.accordions.map((accordion) => {
+		const children = Object.keys(accordionList).map((a) => {
+			const accordion = accordionList[a];
 			let child = childrenByKey.get(accordion.id);
 
 			if (child) {
@@ -38,7 +40,7 @@ export default class AccordionList {
 				child.setAttribute('data-key', accordion.id);
 				this.accordionItem = new AccordionItem(child);
 			}
-			this.accordionItem.update({ accordion });
+			this.accordionItem.update({ ...accordion });
 			return child;
 		});
 

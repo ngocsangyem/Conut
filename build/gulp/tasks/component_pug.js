@@ -11,7 +11,7 @@ const {
 
 const modifyFile = require('gulp-modify-file');
 
-const htmlTemplate = (content, title, assetName) => {
+const htmlTemplateView = (content, title, assetName) => {
 	return `
 	<!DOCTYPE html>
 	<html lang="en">
@@ -29,8 +29,15 @@ const htmlTemplate = (content, title, assetName) => {
 	</html>
 	`;
 };
+const htmlTemplateBlock = (content, assetName) => {
+	return `
+	<link rel="stylesheet" href="./css/${assetName}.css">
+	${content}
+	<script src="./js/${assetName}.js"></script>
+	`;
+};
 
-task('pug:compile', () => {
+task('component:pug:view', () => {
 	return src(paths.mainComponents('views/**/*.pug'))
 		.pipe(
 			plugins.plumber({
@@ -51,7 +58,7 @@ task('pug:compile', () => {
 					/(,|'|"|`| )@([\w-]+)/gi,
 					'"images'
 				);
-				return htmlTemplate(parseContent, fileName, assetName);
+				return htmlTemplateView(parseContent, fileName, assetName);
 			})
 		)
 		.pipe(
@@ -60,6 +67,35 @@ task('pug:compile', () => {
 			})
 		)
 		.pipe(dest(paths._components))
+		.pipe(
+			browserSync.reload({
+				stream: true,
+			})
+		);
+});
+
+task('component:pug:block', () => {
+	return src(paths.mainComponents('views/**/*.pug'))
+		.pipe(
+			plugins.plumber({
+				errorHandler: reportError,
+			})
+		)
+		.pipe(
+			plugins.pug({
+				pretty: '\t',
+			})
+		)
+		.pipe(
+			modifyFile((content, filePath, file) => {
+				const extension = path.extname(filePath);
+				const fileName = path.basename(filePath, extension);
+				const assetName = fileName.split(/-{2,}/)[0];
+				const parseContent = content.replace(/@([\w-]+)/gi, 'images');
+				return htmlTemplateBlock(parseContent, assetName);
+			})
+		)
+		.pipe(dest(paths.components('components')))
 		.pipe(
 			browserSync.reload({
 				stream: true,

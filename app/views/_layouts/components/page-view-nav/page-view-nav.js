@@ -2,7 +2,7 @@ import PageViewNavItem from '../page-view-nav-item/page-view-nav-item';
 import { addClass, removeClass } from '../../../_helpers/DOM';
 export default class PageViewNav {
 	state = {
-		pages: [],
+		pages: {},
 	};
 
 	constructor(el) {
@@ -24,7 +24,8 @@ export default class PageViewNav {
 	update(next) {
 		Object.assign(this.state, next);
 
-		this.state.pages.length > 1
+		const pages = this.state.pages;
+		Object.keys(pages).length > 1
 			? addClass(this.pageViewNav, 'more-pages')
 			: removeClass(this.pageViewNav, 'more-pages');
 
@@ -36,7 +37,8 @@ export default class PageViewNav {
 			childrenByKey.set(child.getAttribute('data-key'), child);
 		});
 
-		const children = this.state.pages.map((page, index) => {
+		const children = Object.keys(pages).map((p, index) => {
+			const page = pages[p];
 			let child = childrenByKey.get(page.id);
 
 			if (child) {

@@ -61,7 +61,10 @@ task('copy:pug', () => {
 });
 
 task('copy:js', () => {
-	return src(paths.mainComponents('**/*.js'))
+	return src([
+		paths.mainComponents('**/*.js'),
+		`!${paths.mainComponents('views/**/*.js')}`,
+	])
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -90,12 +93,4 @@ task('copy:vendor:css', () => {
 		.pipe(dest(paths.components('css')));
 });
 
-task(
-	'copy',
-	series(
-		'copy:pug',
-		'copy:js',
-		'copy:scss',
-		parallel('copy:images', 'copy:fonts', 'copy:vendor:css')
-	)
-);
+task('copy', series(parallel('copy:images', 'copy:fonts', 'copy:vendor:css')));

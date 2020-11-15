@@ -370,24 +370,41 @@
 }
 
 .page-view-contents .page-view-content-item {
-  background-color: #2d2d2d;
   height: calc(100vh - 7.125rem);
   display: none;
   overflow-y: auto;
   position: relative;
 }
 
-.page-view-contents .page-view-content-item::before {
-  content: 'Drag and Drop your component in here';
+.page-view-contents .page-view-content-item::after, .page-view-contents .page-view-content-item::before {
+  content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.page-view-contents .page-view-content-item::after {
+  content: 'Drag and Drop your component in here';
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+.page-view-contents .page-view-content-item::before {
+  background-color: #2d2d2d;
 }
 
 .page-view-contents .page-view-content-item.is-active {
   display: block;
+}
+
+.page-view-contents.is-dragging .page-view-content-item::after {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .pages-edit-main {

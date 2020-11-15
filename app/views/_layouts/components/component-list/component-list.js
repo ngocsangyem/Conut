@@ -1,10 +1,11 @@
 import { Sortable } from 'sortablejs';
 
 import ComponentItem from '../component-item/component-item';
+import { addClass, removeClass } from '../../../_helpers/DOM';
 
 export default class ComponentList {
 	state = {
-		components: [],
+		list: {},
 	};
 
 	constructor(el) {
@@ -19,12 +20,13 @@ export default class ComponentList {
 			'<div class="component-list js-component-list"></div>'
 		);
 
-		this.componentList = this.el.querySelector('.js-component-list')
+		this.componentList = this.el.querySelector('.js-component-list');
 	}
 
 	update(next) {
 		Object.assign(this.state, next);
 
+		const componentList = this.state.list;
 		const container = this.el.querySelector('.js-component-list');
 		const obsolete = new Set(container.children);
 		const childrenByKey = new Map();
@@ -33,7 +35,8 @@ export default class ComponentList {
 			childrenByKey.set(child.getAttribute('data-key'), child);
 		});
 
-		const children = this.state.components.map((component) => {
+		const children = Object.keys(componentList).map((c) => {
+			const component = componentList[c];
 			let child = childrenByKey.get(component.id);
 
 			if (child) {
@@ -61,8 +64,36 @@ export default class ComponentList {
 	}
 
 	handleDragDrop() {
+		const _self = this;
+		const pageViewContents = document.querySelector('.page-view-contents');
 		const sortable = Sortable.create(this.componentList, {
-			// sort: false,
+			group: {
+				name: 'component',
+				pull: 'clone',
+				put: false,
+			},
+			sort: false,
+			onStart: function (event) {
+				addClass(pageViewContents, 'is-dragging');
+			},
+			onEnd: function (event) {
+				_self.addComponent(event);
+				removeClass(pageViewContents, 'is-dragging');
+			},
 		});
+	}
+
+	addComponent(event) {
+		const component = event.item;
+		const accordionId = event.from.parentNode.dataset.key;
+		const componentId = component.dataset.key;
+		const pageId = component.parentNode.dataset.key;
+
+		this.el.dispatchEvent(
+			new CustomEvent('addComponent', {
+				detail: { componentId, pageId, accordionId },
+				bubbles: true,
+			})
+		);
 	}
 }

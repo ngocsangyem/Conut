@@ -6,8 +6,8 @@ import ProjectInput from '../../_layouts/components/project-input/project-input'
 
 export class IndexPage {
 	state = {
-		accordions: [],
-		pages: [],
+		pages: {},
+		components: {},
 	};
 
 	constructor(el) {
@@ -31,7 +31,7 @@ export class IndexPage {
 	load() {
 		const store = new ComponentStore(this.el);
 
-		this.el.addEventListener('accordionsData', (event) => {
+		this.el.addEventListener('appData', (event) => {
 			this.update(event.detail);
 		});
 
@@ -82,7 +82,7 @@ export class IndexPage {
 		Object.assign(this.state, next);
 
 		this.accordionList.update({
-			accordions: this.state.accordions,
+			components: this.state.components,
 		});
 		this.pageViewNav.update({
 			pages: this.state.pages,

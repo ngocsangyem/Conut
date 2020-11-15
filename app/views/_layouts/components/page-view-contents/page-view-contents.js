@@ -2,7 +2,7 @@ import PageViewContentItem from '../page-view-content-item/page-view-content-ite
 import { addClass } from '../../../_helpers/DOM';
 export default class PageViewContents {
 	state = {
-		pages: [],
+		pages: {},
 	};
 
 	constructor(el) {
@@ -20,6 +20,7 @@ export default class PageViewContents {
 	update(next) {
 		Object.assign(this.state, next);
 
+		const pages = this.state.pages;
 		const container = this.el.querySelector('.page-view-contents');
 		const obsolete = new Set(container.children);
 		const childrenByKey = new Map();
@@ -28,7 +29,8 @@ export default class PageViewContents {
 			childrenByKey.set(child.getAttribute('data-key'), child);
 		});
 
-		const children = this.state.pages.map((page, index) => {
+		const children = Object.keys(pages).map((p, index) => {
+			const page = pages[p];
 			let child = childrenByKey.get(page.id);
 
 			if (child) {

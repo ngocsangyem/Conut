@@ -8,7 +8,7 @@ task('watch', (done) => {
 
 		watch(
 			[paths.mainComponents('**/*.pug')],
-			parallel('pug:compile', 'copy:pug')
+			parallel('component:pug:view', 'component:pug:block')
 		);
 
 		watch([paths.mainComponents('**/assets/**/*')], parallel('assets'));

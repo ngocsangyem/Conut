@@ -1,7 +1,5 @@
 .page-view-contents {
 	.page-view-content-item {
-		background-color: $neutralShade6;
-
 		height: calc(100vh - 7.125rem);
 
 		display: none;
@@ -9,20 +7,43 @@
 
 		position: relative;
 
+		&::after,
 		&::before {
-			content: 'Drag and Drop your component in here';
+			content: '';
 
 			position: absolute;
-			top: 50%;
-			left: 50%;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: -1;
+		}
 
-			transform: translate(-50%, -50%);
+		&::after {
+			content: 'Drag and Drop your component in here';
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
 			color: $light;
+			transition: color 0.3s ease-in-out;
+		}
+
+		&::before {
+			background-color: $neutralShade6;
 		}
 
 		&.is-active {
 			display: block;
+		}
+	}
+
+	&.is-dragging {
+		.page-view-content-item {
+			&::after {
+				color: rgba($light, 0.5);
+			}
 		}
 	}
 }

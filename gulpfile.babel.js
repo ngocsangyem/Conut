@@ -20,7 +20,15 @@ task(
 	'dev',
 	series(
 		'clean',
-		parallel('styles', 'scripts', 'pug:compile', 'copy', 'assets'),
+		parallel(
+			'styles',
+			'scripts',
+			'component:pug:view',
+			'component:pug:block',
+			'copy',
+			'assets',
+			'component:scripts'
+		),
 		'watch',
 		'browserSync'
 	)

@@ -1,5 +1,3 @@
-import { addClass } from '../../../helpers/DOM/addClass';
-
 export default class AlertCard {
 	alertCard = Array.from(document.querySelectorAll('.js-alert-card'));
 
@@ -10,7 +8,7 @@ export default class AlertCard {
 	initAlertCard(card) {
 		card.addEventListener('click', function (event) {
 			if (event.target.closest('.js-alert-card__close-btn')) {
-				addClass(card, 'is-hidden');
+				card.classList.add('is-hidden');
 			}
 		});
 	}
