@@ -15,6 +15,8 @@ export default class PageViewContents {
 			'beforeend',
 			'<div class="page-view-contents"></div>'
 		);
+
+		this.pageViewContents = this.el.querySelector('.page-view-contents');
 	}
 
 	update(next) {
@@ -24,6 +26,11 @@ export default class PageViewContents {
 		const container = this.el.querySelector('.page-view-contents');
 		const obsolete = new Set(container.children);
 		const childrenByKey = new Map();
+
+		// Always set active class for first tab when delete page
+		this.el.addEventListener('deletePage', () => {
+			addClass(container.children[0], 'is-active');
+		});
 
 		obsolete.forEach((child) => {
 			childrenByKey.set(child.getAttribute('data-key'), child);
@@ -35,8 +42,6 @@ export default class PageViewContents {
 
 			if (child) {
 				obsolete.delete(child);
-				// Always set active class for first tab when delete page
-				addClass(container.children[0], 'is-active');
 			} else {
 				child = document.createElement('div');
 				child.className =

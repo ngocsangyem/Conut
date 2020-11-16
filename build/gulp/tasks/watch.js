@@ -2,9 +2,9 @@ const { watch, series, parallel, args, task, paths } = require('../../utils');
 
 task('watch', (done) => {
 	if (!args.production) {
-		watch([paths.views('**/*.scss')], parallel('styles', 'copy:scss'));
+		watch([paths.views('**/*.scss')], parallel('styles'));
 
-		watch([paths.views('**/*.js')], parallel('scripts', 'copy:js'));
+		watch([paths.views('**/*.js')], parallel('scripts'));
 
 		watch(
 			[paths.mainComponents('**/*.pug')],

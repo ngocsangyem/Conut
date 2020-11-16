@@ -38,7 +38,6 @@ export default class AccordionItem {
 
 	update(next) {
 		Object.assign(this.state, next);
-		console.log('AccordionItem -> update -> next', next);
 
 		this.accordionItemName.innerText = this.state.name;
 		this.accordionItemCount.innerText = Object.keys(this.state.list).length;

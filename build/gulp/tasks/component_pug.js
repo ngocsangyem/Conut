@@ -18,22 +18,22 @@ const htmlTemplateView = (content, title, assetName) => {
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<link rel="stylesheet" href="./css/codyhouse.css">
-			<link rel="stylesheet" href="./css/${assetName}.css">
+			<link rel="stylesheet" href="/static/templates/css/codyhouse.css">
+			<link rel="stylesheet" href="/static/templates/css/${assetName}.css">
 			<title>${title}</title>
 		</head>
 		<body>
 			${content}
-			<script src="./js/${assetName}.js"></script>
+			<script src="/static/templates/js/${assetName}.js"></script>
 		</body>
 	</html>
 	`;
 };
 const htmlTemplateBlock = (content, assetName) => {
 	return `
-	<link rel="stylesheet" href="./css/${assetName}.css">
+	<link rel="stylesheet" href="/static/templates/css/${assetName}.css">
 	${content}
-	<script src="./js/${assetName}.js"></script>
+	<script src="/static/templates/js/${assetName}.js"></script>
 	`;
 };
 
@@ -56,7 +56,7 @@ task('component:pug:view', () => {
 				const assetName = fileName.split(/-{2,}/)[0];
 				const parseContent = content.replace(
 					/(,|'|"|`| )@([\w-]+)/gi,
-					'"images'
+					'"/static/templates/images'
 				);
 				return htmlTemplateView(parseContent, fileName, assetName);
 			})
@@ -66,7 +66,7 @@ task('component:pug:view', () => {
 				path.dirname = '';
 			})
 		)
-		.pipe(dest(paths._components))
+		.pipe(dest(paths._templates))
 		.pipe(
 			browserSync.reload({
 				stream: true,
@@ -75,7 +75,10 @@ task('component:pug:view', () => {
 });
 
 task('component:pug:block', () => {
-	return src(paths.mainComponents('views/**/*.pug'))
+	return src([
+		paths.mainComponents('**/*.pug'),
+		`!${paths.mainComponents('views/**/*.pug')}`,
+	])
 		.pipe(
 			plugins.plumber({
 				errorHandler: reportError,
@@ -91,11 +94,14 @@ task('component:pug:block', () => {
 				const extension = path.extname(filePath);
 				const fileName = path.basename(filePath, extension);
 				const assetName = fileName.split(/-{2,}/)[0];
-				const parseContent = content.replace(/@([\w-]+)/gi, 'images');
+				const parseContent = content.replace(
+					/@([\w-]+)/gi,
+					'/static/templates/images'
+				);
 				return htmlTemplateBlock(parseContent, assetName);
 			})
 		)
-		.pipe(dest(paths.components('components')))
+		.pipe(dest(paths.templates('components')))
 		.pipe(
 			browserSync.reload({
 				stream: true,

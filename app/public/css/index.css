@@ -384,6 +384,7 @@
   bottom: 0;
   right: 0;
   z-index: -1;
+  pointer-events: none;
 }
 
 .page-view-contents .page-view-content-item::after {
@@ -401,6 +402,14 @@
 
 .page-view-contents .page-view-content-item.is-active {
   display: block;
+}
+
+.page-view-contents .page-view-content-item.has-component {
+  background-color: #2d2d2d;
+}
+
+.page-view-contents .page-view-content-item.has-component::after {
+  content: '';
 }
 
 .page-view-contents.is-dragging .page-view-content-item::after {

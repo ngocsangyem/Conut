@@ -45,6 +45,7 @@ export default class ComponentList {
 				child = document.createElement('div');
 				child.className = 'component-item';
 				child.setAttribute('data-key', component.id);
+				child.setAttribute('data-name', c);
 				this.componentItem = new ComponentItem(child);
 			}
 
@@ -80,20 +81,28 @@ export default class ComponentList {
 				_self.addComponent(event);
 				removeClass(pageViewContents, 'is-dragging');
 			},
+			onMove: function (event, originalEvent) {
+				_self.insertComponentTemplate(event.dragged);
+			},
 		});
 	}
 
 	addComponent(event) {
 		const component = event.item;
-		const accordionId = event.from.parentNode.dataset.key;
-		const componentId = component.dataset.key;
-		const pageId = component.parentNode.dataset.key;
+		const accordionName = event.from.parentNode.dataset.name;
+		const componentName = component.dataset.name;
+		const pageName = component.parentNode.dataset.content;
 
 		this.el.dispatchEvent(
 			new CustomEvent('addComponent', {
-				detail: { componentId, pageId, accordionId },
+				detail: { accordionName, componentName, pageName },
 				bubbles: true,
 			})
 		);
+	}
+	insertComponentTemplate(target) {
+		const componentName = target.dataset.name;
+
+		target.innerHTML = this.state.list[componentName].html;
 	}
 }

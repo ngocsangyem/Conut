@@ -31,6 +31,10 @@ const paths = {
 		return path.join(this._public, ...arguments);
 	},
 
+	templates() {
+		return path.join(this._templates, ...arguments);
+	},
+
 	generators() {
 		return path.join(this._generators, ...arguments);
 	},
@@ -61,7 +65,8 @@ const paths = {
 	_routes: path.join(rootConfig, 'routes'),
 	_views: path.join(rootConfig, 'views'),
 	_mainComponents: path.join(rootConfig, '@YEB-COMPONENTS'),
-	_components: path.join(rootConfig, '@COMPONETS'),
+	_components: path.join(rootConfig, '@COMPONENT'),
+	_templates: path.join(rootConfig, 'public', 'templates'),
 	_server: path.join(rootConfig, 'server'),
 };
 

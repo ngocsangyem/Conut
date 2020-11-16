@@ -20,7 +20,7 @@ export default class PageViewNavItem {
 
 	render() {
 		this.el.innerHTML = `
-			<a class="nav-link" href="javascript:void(0)">
+			<a class="nav-link"  href="javascript:void(0)">
 				<i class="fad fa-file"></i>
 				<div class="page-title">
 					<span class="page-name"></span>
@@ -53,7 +53,9 @@ export default class PageViewNavItem {
 			.addEventListener('click', this.toggleTab);
 		this.el
 			.querySelector('.btn-page-delete')
-			.addEventListener('click', this.removePage.bind(this));
+			.addEventListener('click', (event) => {
+				this.removePage(event);
+			});
 	}
 
 	toggleTab(event) {
@@ -84,12 +86,12 @@ export default class PageViewNavItem {
 	removePage(event) {
 		const target = event.target;
 		const navLink = target.parentNode;
-		const pageId = navLink.getAttribute('data-id');
+		const pageName = navLink.getAttribute('data-tab');
 
 		this.el.dispatchEvent(
 			new CustomEvent('deletePage', {
 				detail: {
-					id: pageId,
+					pageName,
 				},
 				bubbles: true,
 			})

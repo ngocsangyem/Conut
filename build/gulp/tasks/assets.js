@@ -37,7 +37,7 @@ task('assets', () => {
 					asset = asset.join(path.sep);
 					file.path = path.join(file.base, asset);
 
-					return paths.components('images');
+					return paths.templates('images');
 				}
 			})
 		);

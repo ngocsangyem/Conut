@@ -33,7 +33,7 @@ task('copy:images', () => {
 				{ use: [pngquant({ speed: 10 })] }
 			)
 		)
-		.pipe(dest(paths.components('images')));
+		.pipe(dest(paths.templates('images')));
 });
 
 task('copy:fonts', () => {
@@ -44,7 +44,7 @@ task('copy:fonts', () => {
 			})
 		)
 		.pipe(plugins.changed(paths.components('fonts')))
-		.pipe(dest(paths.components('fonts')));
+		.pipe(dest(paths.templates('fonts')));
 });
 
 task('copy:pug', () => {
@@ -57,7 +57,7 @@ task('copy:pug', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest(paths.components('template')));
+		.pipe(dest(paths.templates('template')));
 });
 
 task('copy:js', () => {
@@ -70,7 +70,7 @@ task('copy:js', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest(paths.components('template')));
+		.pipe(dest(paths.templates('template')));
 });
 
 task('copy:scss', () => {
@@ -80,7 +80,7 @@ task('copy:scss', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest(paths.components('template')));
+		.pipe(dest(paths.templates('template')));
 });
 
 task('copy:vendor:css', () => {
@@ -90,7 +90,7 @@ task('copy:vendor:css', () => {
 				errorHandler: reportError,
 			})
 		)
-		.pipe(dest(paths.components('css')));
+		.pipe(dest(paths.templates('css')));
 });
 
 task('copy', series(parallel('copy:images', 'copy:fonts', 'copy:vendor:css')));

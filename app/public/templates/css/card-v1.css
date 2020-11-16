@@ -1,0 +1,108 @@
+.card-v1 {
+  --line-height-multiplier: 1;
+  --text-vspace-multiplier: 1;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card-v1 .card__img img {
+  display: block;
+  width: 100%;
+}
+
+.card-v1 .card__content {
+  padding: var(--space-xs);
+}
+
+.card-v1 .card__text {
+  --line-height-multiplier: 1;
+  --text-vspace-multiplier: 1;
+}
+
+.card-v1 .card__text h1,
+.card-v1 .card__text h2,
+.card-v1 .card__text h3,
+.card-v1 .card__text h4 {
+  line-height: calc(var(--heading-line-height) * var(--line-height-multiplier, 1));
+  margin-bottom: calc(var(--space-unit) * 0.25 * var(--text-vspace-multiplier, 1));
+}
+
+.card-v1 .card__text p,
+.card-v1 .card__text blockquote,
+.card-v1 .card__text ul li,
+.card-v1 .card__text ol li {
+  line-height: calc(var(--body-line-height) * var(--line-height-multiplier, 1));
+  color: hsla(var(--color-contrast-medium-h), var(--color-contrast-medium-s), var(--color-contrast-medium-l), var(--color-o, 1));
+}
+
+.card-v1 .card__text p {
+  font-size: var(--text-sm, 0.833em);
+}
+
+.card-v1 .card--is-link {
+  will-change: box-shadow;
+  transition: box-shadow 0.2s;
+}
+
+.card-v1 .card--is-link:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-v1 .card--is-link:hover .card__img::after {
+  opacity: 1;
+}
+
+.card-v1 .card--is-link .card__img {
+  position: relative;
+}
+
+.card-v1 .card--is-link .card__img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(var(--color-black-h), var(--color-black-s), var(--color-black-l), 0.6);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card-v1 .card__link {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.card-v1 .card__link-icon {
+  position: absolute;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  background-color: hsla(var(--color-white-h), var(--color-white-s), var(--color-white-l), 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card-v1 .card__link-icon .icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: var(--color-black);
+}
+
+.card-v1 .card--is-link:hover .card__link-icon {
+  opacity: 1;
+}
+
+.card-v1 .card__button {
+  margin-top: var(--space-sm);
+}

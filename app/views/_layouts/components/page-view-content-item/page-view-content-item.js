@@ -5,8 +5,8 @@ import { addClass, removeClass } from '../../../_helpers/DOM';
 export default class PageViewContentItem {
 	state = {
 		name: '',
-		id: '',
-		components: [],
+		id: generateId(5),
+		components: {},
 	};
 
 	constructor(el) {
@@ -20,6 +20,14 @@ export default class PageViewContentItem {
 
 	update(next) {
 		Object.assign(this.state, next);
+
+		const components = this.state.components;
+
+		if (Object.keys(components).length > 0) {
+			addClass(this.el, 'has-component');
+		} else {
+			removeClass(this.el, 'has-component');
+		}
 	}
 
 	handleDragDrop() {

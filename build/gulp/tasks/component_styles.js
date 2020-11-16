@@ -48,7 +48,7 @@ task('component:styles', () => {
 					path.dirname = '';
 				})
 			)
-			.pipe(dest(paths.components('css')))
+			.pipe(dest(paths.templates('css')))
 			.pipe(
 				browserSync.reload({
 					stream: true,

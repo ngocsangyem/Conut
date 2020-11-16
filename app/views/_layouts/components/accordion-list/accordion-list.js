@@ -38,6 +38,7 @@ export default class AccordionList {
 				child = document.createElement('div');
 				child.className = 'accordion-item';
 				child.setAttribute('data-key', accordion.id);
+				child.setAttribute('data-name', a);
 				this.accordionItem = new AccordionItem(child);
 			}
 			this.accordionItem.update({ ...accordion });

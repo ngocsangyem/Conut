@@ -23,6 +23,7 @@ task(
 		parallel(
 			'styles',
 			'scripts',
+			'component:styles',
 			'component:pug:view',
 			'component:pug:block',
 			'copy',

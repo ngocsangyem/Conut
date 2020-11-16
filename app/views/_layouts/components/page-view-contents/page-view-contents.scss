@@ -17,6 +17,8 @@
 			bottom: 0;
 			right: 0;
 			z-index: -1;
+
+			pointer-events: none;
 		}
 
 		&::after {
@@ -36,6 +38,14 @@
 
 		&.is-active {
 			display: block;
+		}
+
+		&.has-component {
+			background-color: $neutralShade6;
+
+			&::after {
+				content: '';
+			}
 		}
 	}
 

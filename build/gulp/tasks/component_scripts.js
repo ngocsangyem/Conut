@@ -17,5 +17,5 @@ task('component:scripts', () => {
 		)
 		.pipe(named())
 		.pipe(webpackStream(WebpackComponentConfig, webpack, function () {}))
-		.pipe(dest(paths.components('js')));
+		.pipe(dest(paths.templates('js')));
 });

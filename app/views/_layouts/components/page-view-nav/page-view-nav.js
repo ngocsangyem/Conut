@@ -25,9 +25,15 @@ export default class PageViewNav {
 		Object.assign(this.state, next);
 
 		const pages = this.state.pages;
+
 		Object.keys(pages).length > 1
 			? addClass(this.pageViewNav, 'more-pages')
 			: removeClass(this.pageViewNav, 'more-pages');
+
+		// Always set active class for first tab when delete page
+		this.el.addEventListener('deletePage', () => {
+			addClass(container.children[0], 'is-active');
+		});
 
 		const container = this.el.querySelector('.page-view-nav ul');
 		const obsolete = new Set(container.children);
@@ -43,14 +49,11 @@ export default class PageViewNav {
 
 			if (child) {
 				obsolete.delete(child);
-				// Always set active class for first tab when delete page
-				addClass(container.children[0], 'is-active');
 			} else {
 				child = document.createElement('li');
+				child.setAttribute('data-key', page.id);
 				child.className =
 					index === 0 ? 'nav-item is-active' : 'nav-item';
-				child.setAttribute('data-key', page.id);
-				child.setAttribute('data-page', page.name);
 				this.pageViewNavItem = new PageViewNavItem(child);
 			}
 
