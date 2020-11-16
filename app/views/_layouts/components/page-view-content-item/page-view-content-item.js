@@ -40,7 +40,7 @@ export default class PageViewContentItem {
 			onMove: function (event, originalEvent) {},
 			onStart: function (event) {},
 			onAdd: function (event) {
-				const component = event.item;
+				addClass(_self.el, 'has-component');
 			},
 		});
 	}

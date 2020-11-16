@@ -102,6 +102,173 @@ export default class ComponentStore {
 				},
 			},
 		},
+		grid: {
+			container: {
+				'container-basic': {
+					name: 'Container basic',
+					html:
+						'<div class="container max-width-sm max-width-md max-width-lg"></div>',
+				},
+				'container-fluid': {
+					name: 'Container fluid',
+					html: '<div class="container"></div>',
+				},
+			},
+			row: {
+				row: {
+					name: 'row',
+					html: '<div class="grid gap-md"></div>',
+					modifiers: [
+						'gap-xxxxs',
+						'gap-xxxs',
+						'gap-xxs',
+						'gap-xs',
+						'gap-sm',
+						'gap-md',
+						'gap-lg',
+						'gap-xl',
+						'gap-xxl',
+						'gap-xxxl',
+						'gap-xxxxl',
+						'gap-0',
+					],
+				},
+			},
+			col: {
+				'col-1': {
+					name: 'col-1',
+					html: '<div class="col-1"></div>',
+					modifiers: [
+						'col-1@xs',
+						'col-1@sm',
+						'col-1@md',
+						'col-1@lg',
+						'col-1@xl',
+					],
+				},
+				'col-2': {
+					name: 'col-2',
+					html: '<div class="col-2"></div>',
+					modifiers: [
+						'col-2@xs',
+						'col-2@sm',
+						'col-2@md',
+						'col-2@lg',
+						'col-2@xl',
+					],
+				},
+				'col-3': {
+					name: 'col-3',
+					html: '<div class="col-3"></div>',
+					modifiers: [
+						'col-3@xs',
+						'col-3@sm',
+						'col-3@md',
+						'col-3@lg',
+						'col-3@xl',
+					],
+				},
+				'col-4': {
+					name: 'col-4',
+					html: '<div class="col-4"></div>',
+					modifiers: [
+						'col-4@xs',
+						'col-4@sm',
+						'col-4@md',
+						'col-4@lg',
+						'col-4@xl',
+					],
+				},
+				'col-5': {
+					name: 'col-5',
+					html: '<div class="col-5"></div>',
+					modifiers: [
+						'col-5@xs',
+						'col-5@sm',
+						'col-5@md',
+						'col-5@lg',
+						'col-5@xl',
+					],
+				},
+				'col-6': {
+					name: 'col-6',
+					html: '<div class="col-6"></div>',
+					modifiers: [
+						'col-6@xs',
+						'col-6@sm',
+						'col-6@md',
+						'col-6@lg',
+						'col-6@xl',
+					],
+				},
+				'col-7': {
+					name: 'col-7',
+					html: '<div class="col-7"></div>',
+					modifiers: [
+						'col-7@xs',
+						'col-7@sm',
+						'col-7@md',
+						'col-7@lg',
+						'col-7@xl',
+					],
+				},
+				'col-8': {
+					name: 'col-8',
+					html: '<div class="col-8"></div>',
+					modifiers: [
+						'col-8@xs',
+						'col-8@sm',
+						'col-8@md',
+						'col-8@lg',
+						'col-8@xl',
+					],
+				},
+				'col-9': {
+					name: 'col-9',
+					html: '<div class="col-9"></div>',
+					modifiers: [
+						'col-9@xs',
+						'col-9@sm',
+						'col-9@md',
+						'col-9@lg',
+						'col-9@xl',
+					],
+				},
+				'col-10': {
+					name: 'col-10',
+					html: '<div class="col-10"></div>',
+					modifiers: [
+						'col-10@xs',
+						'col-10@sm',
+						'col-10@md',
+						'col-10@lg',
+						'col-10@xl',
+					],
+				},
+				'col-11': {
+					name: 'col-11',
+					html: '<div class="col-11"></div>',
+					modifiers: [
+						'col-11@xs',
+						'col-11@sm',
+						'col-11@md',
+						'col-11@lg',
+						'col-11@xl',
+					],
+				},
+				'col-12': {
+					name: 'col-12',
+					html: '<div class="col-12"></div>',
+					modifiers: [
+						'col-12@xs',
+						'col-12@sm',
+						'col-12@md',
+						'col-12@lg',
+						'col-12@xl',
+					],
+				},
+			},
+		},
 	};
 	storeTimeout = null;
 
@@ -134,7 +301,7 @@ export default class ComponentStore {
 
 	dispatch(next) {
 		Object.assign(this.state, next);
-		this.store();
+		// this.store();
 
 		this.el.dispatchEvent(
 			new CustomEvent('appData', {
@@ -145,12 +312,13 @@ export default class ComponentStore {
 	}
 
 	load() {
-		if (localStorage.accordions === undefined) {
-			this.dispatch(this.state);
-			return;
-		}
+		// if (localStorage.accordions === undefined) {
+		// 	this.dispatch(this.state);
+		// 	return;
+		// }
 		try {
-			this.dispatch(JSON.parse(localStorage.accordions));
+			this.dispatch(this.state);
+			// this.dispatch(JSON.parse(localStorage.accordions));
 		} catch (err) {
 			console.warn(err);
 		}
