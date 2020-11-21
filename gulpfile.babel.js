@@ -34,3 +34,19 @@ task(
 		'browserSync'
 	)
 );
+task(
+	'build',
+	series(
+		'clean',
+		parallel(
+			'styles',
+			'scripts',
+			'component:styles',
+			'component:pug:view',
+			'component:pug:block',
+			'copy',
+			'assets',
+			'component:scripts'
+		)
+	)
+);

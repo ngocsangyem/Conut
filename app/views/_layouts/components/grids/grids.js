@@ -20,7 +20,7 @@ export default class Grids {
 	render() {
 		this.el.insertAdjacentHTML(
 			'beforeend',
-			'<div class="grids" id="grids"><button class="sidepanel-button sidepanel-button--back"><i class="fal fa-chevron-left"></i> Back </button></div>'
+			'<div class="grids" id="grids"><button class="sidepanel-button sidepanel-button--back"><i class="fal fa-chevron-left"></i> Components </button></div>'
 		);
 	}
 

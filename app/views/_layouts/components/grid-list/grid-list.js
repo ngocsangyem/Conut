@@ -1,3 +1,5 @@
+import { Sortable } from 'sortablejs';
+
 import GridItem from '../grid-item/grid-item';
 
 export default class GridList {
@@ -8,6 +10,7 @@ export default class GridList {
 	constructor(el) {
 		this.el = el;
 		this.render();
+		this.handleDragDrop();
 	}
 
 	render() {
@@ -57,6 +60,15 @@ export default class GridList {
 			if (child !== container.children[index]) {
 				container.insertBefore(child, container.children[index]);
 			}
+		});
+	}
+
+	handleDragDrop() {
+		const _self = this;
+		const sortable = Sortable.create(this.gridListEl, {
+			group: {
+				name: 'component',
+			},
 		});
 	}
 }

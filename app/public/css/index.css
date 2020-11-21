@@ -514,9 +514,14 @@
   content: '\f068';
 }
 
+.grid-item {
+  cursor: move;
+}
+
 .grid-item h5 {
   padding: 0.5rem;
   font-size: 0.8rem;
+  user-select: none;
 }
 
 .pages-edit-main {

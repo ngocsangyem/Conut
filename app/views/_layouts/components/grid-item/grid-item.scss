@@ -1,7 +1,10 @@
 .grid-item {
+	cursor: move;
+
 	h5 {
 		padding: 0.5rem;
 
 		font-size: 0.8rem;
+		user-select: none;
 	}
 }
