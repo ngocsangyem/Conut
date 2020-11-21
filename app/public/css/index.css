@@ -197,6 +197,12 @@
   background-color: rgba(66, 66, 66, 0.5);
 }
 
+.accordion-item .list-render {
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
 .accordion-item.is-active .accordion-item-title {
   background-color: rgba(66, 66, 66, 0.5);
 }
@@ -205,13 +211,7 @@
   content: '\f068';
 }
 
-.accordion-item .component-list {
-  max-height: 0;
-  transition: max-height 0.3s ease-in-out;
-  overflow-y: auto;
-}
-
-.accordion-item.is-active .component-list {
+.accordion-item.is-active .list-render {
   max-height: 400px;
   transition: max-height 0.3s ease-in-out;
 }
@@ -512,6 +512,11 @@
 
 .grid-container.is-active .grid-title::before {
   content: '\f068';
+}
+
+.grid-item h5 {
+  padding: 0.5rem;
+  font-size: 0.8rem;
 }
 
 .pages-edit-main {

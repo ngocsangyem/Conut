@@ -1,4 +1,3 @@
-
 export default class ComponentItem {
 	state = {
 		id: '',
@@ -30,6 +29,6 @@ export default class ComponentItem {
 
 		this.componentImg.setAttribute('src', this.state.image);
 		this.componentImg.setAttribute('alt', this.state.name);
-		this.componentLink.innerHTML = this.state.name;
+		this.componentLink.innerText = this.state.name;
 	}
 }

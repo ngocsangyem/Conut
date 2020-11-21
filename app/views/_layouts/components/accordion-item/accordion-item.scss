@@ -47,6 +47,13 @@
 		}
 	}
 
+	.list-render {
+		max-height: 0;
+		transition: max-height 0.3s ease-in-out;
+
+		overflow-y: auto;
+	}
+
 	&.is-active {
 		.accordion-item-title {
 			background-color: rgba($neutralShade7, 0.5);
@@ -54,6 +61,11 @@
 			&::before {
 				content: '\f068';
 			}
+		}
+
+		.list-render {
+			max-height: 400px;
+			transition: max-height 0.3s ease-in-out;
 		}
 	}
 }

@@ -17,7 +17,7 @@ export default class ComponentList {
 	render() {
 		this.el.insertAdjacentHTML(
 			'beforeend',
-			'<div class="component-list js-component-list"></div>'
+			'<div class="component-list list-render js-component-list"></div>'
 		);
 
 		this.componentList = this.el.querySelector('.js-component-list');
