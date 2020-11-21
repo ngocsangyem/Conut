@@ -1,0 +1,52 @@
+.grid-container {
+	color: $light;
+
+	.grid-title {
+		position: relative;
+		cursor: pointer;
+
+		padding: 0.5rem;
+
+		display: flex;
+		align-items: center;
+
+		color: $light;
+		transition: background-color 0.3s ease-in-out;
+
+		span {
+			font-size: 0.8rem;
+		}
+
+		&::before {
+			content: '\f067';
+
+			font-family: 'Font Awesome 5 Pro';
+			font-weight: 300;
+			font-size: 1rem;
+
+			position: absolute;
+			top: 50%;
+			right: 0.5rem;
+
+			transform: translateY(-50%);
+		}
+
+		&:hover {
+			background-color: rgba($neutralShade7, 0.5);
+		}
+	}
+
+	.grid-item {
+		padding: 0.5rem 0.5rem 0.5rem 1rem;
+	}
+
+	&.is-active {
+		.grid-title {
+			background-color: rgba($neutralShade7, 0.5);
+
+			&::before {
+				content: '\f068';
+			}
+		}
+	}
+}

@@ -1,27 +1,28 @@
 import AccordionItem from '../accordion-item/accordion-item';
 
 export default class AccordionList {
-	state = {
-		components: {},
-	};
+	state = {};
 
-	constructor(el) {
+	constructor(el, List) {
 		this.el = el;
 		this.render(this.el);
+		this.List = List;
 	}
 
 	render() {
-		this.el.innerHTML = `
-			<div class="accordion-list js-accordion-list">
-			</div>
-		`;
+		this.el.insertAdjacentHTML(
+			'beforeend',
+			'<div class="accordion-list js-accordion-list"></div>'
+		);
+
+		this.accordionList = this.el.querySelector('.js-accordion-list');
 	}
 
 	update(next) {
 		Object.assign(this.state, next);
 
-		const accordionList = this.state.components;
-		const obsolete = new Set(this.el.children);
+		const accordionList = this.state;
+		const obsolete = new Set(this.accordionList.children);
 		const childrenByKey = new Map();
 
 		obsolete.forEach((child) => {
@@ -39,19 +40,22 @@ export default class AccordionList {
 				child.className = 'accordion-item';
 				child.setAttribute('data-key', accordion.id);
 				child.setAttribute('data-name', a);
-				this.accordionItem = new AccordionItem(child);
+				this.accordionItem = new AccordionItem(child, this.List);
 			}
 			this.accordionItem.update({ ...accordion });
 			return child;
 		});
 
 		obsolete.forEach((child) => {
-			this.el.removeChild(child);
+			this.accordionList.removeChild(child);
 		});
 
 		children.forEach((child, index) => {
-			if (child !== this.el.children[index]) {
-				this.el.insertBefore(child, this.el.children[index]);
+			if (child !== this.accordionList.children[index]) {
+				this.accordionList.insertBefore(
+					child,
+					this.accordionList.children[index]
+				);
 			}
 		});
 	}

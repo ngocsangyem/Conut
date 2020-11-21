@@ -121,6 +121,39 @@
   padding-bottom: 1rem;
   background-color: #1c1c1c;
   overflow-y: auto;
+  position: relative;
+}
+
+.pages-edit-sidepanel .sidepanel-button {
+  padding: 0.5rem;
+  width: 100%;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pages-edit-sidepanel .sidepanel-button:focus {
+  outline: none;
+}
+
+.pages-edit-sidepanel .sidepanel-button--goto {
+  display: flex;
+}
+
+.pages-edit-sidepanel .sidepanel-button--goto i {
+  margin-left: auto;
+}
+
+.pages-edit-sidepanel .sidepanel-button--back {
+  text-align: left;
+}
+
+.pages-edit-sidepanel .sidepanel-button--back i {
+  margin-right: 0.3rem;
 }
 
 .accordion-item {
@@ -414,6 +447,71 @@
 
 .page-view-contents.is-dragging .page-view-content-item::after {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.grids {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #1c1c1c;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.grids.is-opened {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.grid-container {
+  color: #fff;
+}
+
+.grid-container .grid-title {
+  position: relative;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.grid-container .grid-title span {
+  font-size: 0.8rem;
+}
+
+.grid-container .grid-title::before {
+  content: '\f067';
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: 300;
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.grid-container .grid-title:hover {
+  background-color: rgba(66, 66, 66, 0.5);
+}
+
+.grid-container .grid-item {
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.grid-container.is-active .grid-title {
+  background-color: rgba(66, 66, 66, 0.5);
+}
+
+.grid-container.is-active .grid-title::before {
+  content: '\f068';
 }
 
 .pages-edit-main {

@@ -1,21 +1,28 @@
-import AccordionList from '../../_layouts/components/accordion-list/accordion-list';
 import PageViewNav from '../../_layouts/components/page-view-nav/page-view-nav';
 import PageViewContents from '../../_layouts/components/page-view-contents/page-view-contents';
 import ComponentStore from '../../_store/component-store';
 import ProjectInput from '../../_layouts/components/project-input/project-input';
+import SidePanel from '../../_layouts/components/sidepanel/sidepanel';
+import Components from '../../_layouts/components/components/components';
+import Grids from '../../_layouts/components/grids/grids';
 
 export class IndexPage {
 	state = {
 		pages: {},
 		components: {},
+		grids: {},
 	};
 
 	constructor(el) {
 		this.el = el;
 		this.render();
-		this.accordionList = new AccordionList(
+		this.sidePanel = new SidePanel(
+			document.querySelector('.pages-edit-main')
+		);
+		this.components = new Components(
 			document.querySelector('.pages-edit-sidepanel')
 		);
+		this.grids = new Grids(document.querySelector('.pages-edit-sidepanel'));
 		this.pageViewNav = new PageViewNav(
 			document.querySelector('.js-page-edit-tabs')
 		);
@@ -68,8 +75,6 @@ export class IndexPage {
 			</div>
 		</header>
 		<section class="pages-edit-main">
-			<aside class="pages-edit-sidepanel">
-			</aside>
 			<div class="pages-edit-view">
 				<div class="page-edit-tabs js-page-edit-tabs">
 				</div>
@@ -81,14 +86,17 @@ export class IndexPage {
 	update(next) {
 		Object.assign(this.state, next);
 
-		this.accordionList.update({
-			components: this.state.components,
-		});
 		this.pageViewNav.update({
 			pages: this.state.pages,
 		});
 		this.pageViewContents.update({
 			pages: this.state.pages,
+		});
+		this.components.update({
+			components: this.state.components,
+		});
+		this.grids.update({
+			grids: this.state.grids,
 		});
 	}
 

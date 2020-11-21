@@ -1,5 +1,3 @@
-import ComponentList from '../component-list/component-list';
-
 import {
 	switchClass,
 	hasClass,
@@ -15,9 +13,10 @@ export default class AccordionItem {
 		list: {},
 	};
 
-	constructor(el) {
+	constructor(el, List) {
 		this.el = el;
 		this.render();
+		this.List = new List(this.el);
 		this.handleEvents();
 	}
 
@@ -33,7 +32,6 @@ export default class AccordionItem {
 		this.accordionItemCount = this.el.querySelector(
 			'.accordion-component-count'
 		);
-		this.componentList = new ComponentList(this.el);
 	}
 
 	update(next) {
@@ -42,7 +40,7 @@ export default class AccordionItem {
 		this.accordionItemName.innerText = this.state.name;
 		this.accordionItemCount.innerText = Object.keys(this.state.list).length;
 
-		this.componentList.update({ list: this.state.list });
+		this.List.update({ list: this.state.list });
 	}
 
 	handleEvents() {

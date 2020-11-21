@@ -8,4 +8,42 @@
 	background-color: $neutralShade8;
 
 	overflow-y: auto;
+
+	position: relative;
+
+	.sidepanel-button {
+		padding: 0.5rem;
+
+		width: 100%;
+
+		color: $light;
+		background-color: transparent;
+		border: none;
+		transition: background-color 0.3s ease-in-out;
+
+		font-size: 0.8rem;
+		font-weight: 600;
+
+		cursor: pointer;
+
+		&:focus {
+			outline: none;
+		}
+
+		&--goto {
+			display: flex;
+
+			i {
+				margin-left: auto;
+			}
+		}
+
+		&--back {
+			text-align: left;
+
+			i {
+				margin-right: 0.3rem;
+			}
+		}
+	}
 }
