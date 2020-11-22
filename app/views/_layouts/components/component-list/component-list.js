@@ -77,29 +77,30 @@ export default class ComponentList {
 			onStart: function (event) {
 				addClass(pageViewContents, 'is-dragging');
 			},
-			onEnd: function (event) {
+			onRemove: function (event) {
 				_self.addComponent(event);
+				_self.insertComponentTemplate(event.item);
 				removeClass(pageViewContents, 'is-dragging');
-			},
-			onMove: function (event, originalEvent) {
-				_self.insertComponentTemplate(event.dragged);
 			},
 		});
 	}
 
 	addComponent(event) {
 		const component = event.item;
-		const accordionName = event.from.parentNode.dataset.name;
-		const componentName = component.dataset.name;
-		const pageName = component.parentNode.dataset.content;
+		const componentInfo = {
+			accordionName: event.from.parentNode.dataset.name,
+			componentName: component.dataset.name,
+			pageName: component.parentNode.dataset.content,
+		};
 
 		this.el.dispatchEvent(
 			new CustomEvent('addComponent', {
-				detail: { accordionName, componentName, pageName },
+				detail: componentInfo,
 				bubbles: true,
 			})
 		);
 	}
+
 	insertComponentTemplate(target) {
 		const componentName = target.dataset.name;
 

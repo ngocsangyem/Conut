@@ -45,6 +45,7 @@ export default class GridList {
 				child.className = 'grid-item';
 				child.setAttribute('data-key', grid.id);
 				child.setAttribute('data-name', g);
+				child.setAttribute('data-html', grid.html);
 				this.gridItem = new GridItem(child);
 			}
 
@@ -68,7 +69,53 @@ export default class GridList {
 		const sortable = Sortable.create(this.gridListEl, {
 			group: {
 				name: 'component',
+				pull: 'clone',
+				put: false,
+			},
+			onRemove: function (event) {
+				_self.addGrid(event);
+				_self.insertGridTemplate(event.item);
+				_self.customTemplate(event.item);
+				_self.setInfoForCustomTemplate(event.item);
 			},
 		});
+	}
+
+	addGrid(event) {
+		const grid = event.item;
+		const parent = event.from.parentNode;
+		const gridInfo = {
+			gridParentName: parent.dataset.name,
+			gridParentId: parent.dataset.key,
+			gridItemName: grid.dataset.name,
+			gridItemId: grid.dataset.key,
+		};
+
+		this.el.dispatchEvent(
+			new CustomEvent('addGrid', {
+				detail: gridInfo,
+				bubbles: true,
+			})
+		);
+	}
+
+	insertGridTemplate(gridItem) {
+		gridItem.innerHTML = gridItem.dataset.html;
+	}
+
+	customTemplate(gridItem) {
+		const child = gridItem.children[0];
+
+		child.insertAdjacentHTML(
+			'beforeend',
+			'<span class="grid-item-name"></span><button class="grid-item-btn-delete"><i class="fal fa-times"></i></button>'
+		);
+	}
+
+	setInfoForCustomTemplate(gridItem) {
+		const child = gridItem.children[0];
+		const gridItemName = child.querySelector('.grid-item-name');
+
+		gridItemName.textContent = gridItem.dataset.name;
 	}
 }

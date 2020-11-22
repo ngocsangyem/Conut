@@ -1,0 +1,100 @@
+.page-view-content-item {
+	height: calc(100vh - 7.125rem);
+
+	display: none;
+	overflow-y: auto;
+
+	position: relative;
+
+	&::after,
+	&::before {
+		content: '';
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1;
+
+		pointer-events: none;
+	}
+
+	&::after {
+		content: 'Drag and Drop your component in here';
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: $light;
+		transition: color 0.3s ease-in-out;
+	}
+
+	&::before {
+		background-color: $neutralShade6;
+	}
+
+	&.is-active {
+		display: block;
+	}
+
+	&.has-component {
+		background-color: $neutralShade6;
+
+		&::after {
+			content: '';
+		}
+	}
+
+	.sortable-ghost {
+		background-color: rgba($dark, 0.4);
+		height: 200px;
+
+		>* {
+			display: none !important;
+		}
+	}
+
+	.container,
+	.grid,
+	[class*="col-"] {
+		position: relative;
+		min-height: 5rem;
+		background-color: rgba($dark, 0.6);
+	}
+
+	.grid-item-name,
+	.grid-item-btn-delete {
+		position: absolute;
+		top: 0;
+		z-index: 500;
+	}
+
+	.grid-item-name {
+		left: 0;
+
+		color: rgba($light, 0.7);
+
+		font-size: 0.8rem;
+		user-select: none;
+
+		padding: 0.3rem;
+	}
+
+	.grid-item-btn-delete {
+		background-color: $accent3Color;
+		color: $light;
+		border: none;
+
+		cursor: pointer;
+
+		padding: 1px 6px;
+
+		right: 0;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

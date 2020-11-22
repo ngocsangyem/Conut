@@ -312,6 +312,10 @@ export default class ComponentStore {
 		this.el.addEventListener('addComponent', (event) => {
 			this.addComponent(event);
 		});
+
+		this.el.addEventListener('addGrid', (event) => {
+			this.addGrid(event);
+		});
 	}
 
 	store() {
@@ -363,5 +367,16 @@ export default class ComponentStore {
 			(this.state.pages[pageName].components[componentName] || 0) + 1;
 
 		this.dispatch({ pages: this.state.pages });
+	}
+
+	addGrid(event) {
+		const {
+			gridParentName,
+			gridParentId,
+			gridItemName,
+			gridItemId,
+		} = event.detail;
+
+		this.dispatch({ grids: this.state.grids });
 	}
 }

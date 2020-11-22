@@ -402,14 +402,14 @@
   background-color: #fff;
 }
 
-.page-view-contents .page-view-content-item {
+.page-view-content-item {
   height: calc(100vh - 7.125rem);
   display: none;
   overflow-y: auto;
   position: relative;
 }
 
-.page-view-contents .page-view-content-item::after, .page-view-contents .page-view-content-item::before {
+.page-view-content-item::after, .page-view-content-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -420,7 +420,7 @@
   pointer-events: none;
 }
 
-.page-view-contents .page-view-content-item::after {
+.page-view-content-item::after {
   content: 'Drag and Drop your component in here';
   display: flex;
   justify-content: center;
@@ -429,20 +429,65 @@
   transition: color 0.3s ease-in-out;
 }
 
-.page-view-contents .page-view-content-item::before {
+.page-view-content-item::before {
   background-color: #2d2d2d;
 }
 
-.page-view-contents .page-view-content-item.is-active {
+.page-view-content-item.is-active {
   display: block;
 }
 
-.page-view-contents .page-view-content-item.has-component {
+.page-view-content-item.has-component {
   background-color: #2d2d2d;
 }
 
-.page-view-contents .page-view-content-item.has-component::after {
+.page-view-content-item.has-component::after {
   content: '';
+}
+
+.page-view-content-item .sortable-ghost {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 200px;
+}
+
+.page-view-content-item .sortable-ghost > * {
+  display: none !important;
+}
+
+.page-view-content-item .container,
+.page-view-content-item .grid,
+.page-view-content-item [class*="col-"] {
+  position: relative;
+  min-height: 5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.page-view-content-item .grid-item-name,
+.page-view-content-item .grid-item-btn-delete {
+  position: absolute;
+  top: 0;
+  z-index: 500;
+}
+
+.page-view-content-item .grid-item-name {
+  left: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  user-select: none;
+  padding: 0.3rem;
+}
+
+.page-view-content-item .grid-item-btn-delete {
+  background-color: #fe5f55;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 1px 6px;
+  right: 0;
+}
+
+.page-view-content-item .grid-item-btn-delete:focus {
+  outline: none;
 }
 
 .page-view-contents.is-dragging .page-view-content-item::after {
@@ -514,11 +559,11 @@
   content: '\f068';
 }
 
-.grid-item {
+.grid-list .grid-item {
   cursor: move;
 }
 
-.grid-item h5 {
+.grid-list .grid-item h5 {
   padding: 0.5rem;
   font-size: 0.8rem;
   user-select: none;

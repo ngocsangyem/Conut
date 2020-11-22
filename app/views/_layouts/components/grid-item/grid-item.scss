@@ -1,10 +1,12 @@
-.grid-item {
-	cursor: move;
+.grid-list {
+	.grid-item {
+		cursor: move;
 
-	h5 {
-		padding: 0.5rem;
+		h5 {
+			padding: 0.5rem;
 
-		font-size: 0.8rem;
-		user-select: none;
+			font-size: 0.8rem;
+			user-select: none;
+		}
 	}
 }

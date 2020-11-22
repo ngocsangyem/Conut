@@ -34,13 +34,19 @@ export default class PageViewContentItem {
 		const _self = this;
 		const sortable = Sortable.create(this.el, {
 			group: {
-				name: 'component',
+				put: 'component',
 				pull: false,
 			},
 			onMove: function (event, originalEvent) {},
 			onStart: function (event) {},
 			onAdd: function (event) {
 				addClass(_self.el, 'has-component');
+			},
+			onAdd: function (event) {
+				console.log(
+					'PageViewContentItem -> handleDragDrop -> onAdd -> event',
+					event
+				);
 			},
 		});
 	}
