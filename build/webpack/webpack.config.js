@@ -1,13 +1,14 @@
 const TerserPlugin = require('terser-webpack-plugin');
+const minimist = require('minimist');
 const { paths } = require('../utils');
 
-const { isDev } = '../utils';
+const isDev = minimist(process.argv.slice(2)).development;
 
 const WebpackConfig = {
-	// devtool: isDev ? 'eval-source-map' : false,
-	// mode: isDev ? 'development' : 'production',
-	devtool: 'eval-source-map',
-	mode: 'development',
+	devtool: isDev ? 'eval-source-map' : false,
+	mode: isDev ? 'development' : 'production',
+	// devtool: 'eval-source-map',
+	// mode: 'development',
 	target: 'web',
 	module: {
 		rules: [
@@ -33,14 +34,14 @@ const WebpackConfig = {
 	},
 };
 
-// if (!isDev) {
-// 	WebpackConfig.plugins.push(
-// 		new TerserPlugin({
-// 			cache: true,
-// 			parallel: true,
-// 			extractComments: false,
-// 		})
-// 	);
-// }
+if (!isDev) {
+	WebpackConfig.plugins.push(
+		new TerserPlugin({
+			cache: true,
+			parallel: true,
+			extractComments: false,
+		})
+	);
+}
 
 module.exports = { WebpackConfig };

@@ -17,9 +17,11 @@ const plugins = gulpLoadPlugins();
 
 // Gather arguments passed to node commands
 const args = minimist(process.argv.slice(2));
+console.log('args', args);
 
 // Develop environment
 const isDev = args.development;
+console.log('isDev', isDev);
 
 // Create a new browserSync instance
 const browserSync = browserSyncLib.create();

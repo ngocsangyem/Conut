@@ -2,7 +2,7 @@ const webpackStream = require('webpack-stream');
 const webpack = require('webpack');
 const named = require('vinyl-named');
 
-const { glob, task, src, dest, path, paths } = require('../../utils');
+const { glob, task, src, dest, path, paths, args } = require('../../utils');
 const { WebpackConfig } = require('../../webpack/webpack.config');
 
 const getEntry = () => {
@@ -18,9 +18,13 @@ const getEntry = () => {
 };
 
 task('scripts', (done) => {
-	return src([paths.views('pages/**/*.js'), `!${paths._views}/{**/_*,**/_*/**}`], {
-		allowEmpty: true,
-	})
+	console.log('enviroment', args);
+	return src(
+		[paths.views('pages/**/*.js'), `!${paths._views}/{**/_*,**/_*/**}`],
+		{
+			allowEmpty: true,
+		}
+	)
 		.pipe(named())
 		.pipe(webpackStream(WebpackConfig, webpack, function () {}))
 		.pipe(dest(paths.public('js')));
