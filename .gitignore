@@ -162,4 +162,6 @@ dist
 @COMPONETS
 app/public/css/*
 app/public/js/*
+app/public/templates/js/*
+app/public/templates/css/*
 app/public/templates/*
