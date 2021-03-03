@@ -75,6 +75,10 @@ export default class ComponentList {
 			},
 			sort: false,
 			onStart: function (event) {
+				console.log(
+					'🚀 ~ file: component-list.js ~ line 86 ~ ComponentList ~ handleDragDrop ~ event',
+					event
+				);
 				addClass(pageViewContents, 'is-dragging');
 			},
 			onRemove: function (event) {

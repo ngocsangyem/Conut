@@ -11,6 +11,7 @@ import { toSnakeCase } from './toSnakeCase';
 import { trigger } from './trigger';
 import { truncateString } from './truncateString';
 import { generateId } from './generateId';
+import { toArray } from './toArray';
 
 export {
 	createEventHub,
@@ -26,4 +27,5 @@ export {
 	trigger,
 	truncateString,
 	generateId,
+	toArray,
 };

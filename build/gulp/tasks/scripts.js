@@ -18,7 +18,6 @@ const getEntry = () => {
 };
 
 task('scripts', (done) => {
-	console.log('enviroment', args);
 	return src(
 		[paths.views('pages/**/*.js'), `!${paths._views}/{**/_*,**/_*/**}`],
 		{

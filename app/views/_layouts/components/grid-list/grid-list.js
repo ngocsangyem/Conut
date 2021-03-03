@@ -2,6 +2,8 @@ import { Sortable } from 'sortablejs';
 
 import GridItem from '../grid-item/grid-item';
 
+import { toArray } from '../../../_helpers';
+
 export default class GridList {
 	state = {
 		list: {},
@@ -68,15 +70,19 @@ export default class GridList {
 		const _self = this;
 		const sortable = Sortable.create(this.gridListEl, {
 			group: {
-				name: 'component',
+				name: 'grid',
 				pull: 'clone',
-				put: false,
+				put: 'child',
 			},
+			sort: false,
 			onRemove: function (event) {
 				_self.addGrid(event);
 				_self.insertGridTemplate(event.item);
 				_self.customTemplate(event.item);
 				_self.setInfoForCustomTemplate(event.item);
+			},
+			onEnd: function (event) {
+				_self.handleChildDragDrop(event.item);
 			},
 		});
 	}
@@ -117,5 +123,22 @@ export default class GridList {
 		const gridItemName = child.querySelector('.grid-item-name');
 
 		gridItemName.textContent = gridItem.dataset.name;
+	}
+
+	handleChildDragDrop(el) {
+		const _self = this;
+		toArray(
+			el.querySelectorAll('.container, .grid, [class*="col-"]')
+		).forEach((el) => {
+			const sortable = Sortable.create(el, {
+				group: {
+					name: 'child',
+					put: ['component', 'grid', 'child'],
+				},
+				fallbackOnBody: true,
+				swapThreshold: 0.65,
+				onEnd: function (event) {},
+			});
+		});
 	}
 }

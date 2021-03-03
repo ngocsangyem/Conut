@@ -1,6 +1,6 @@
 import { Sortable } from 'sortablejs';
 
-import { generateId } from '../../../_helpers';
+import { generateId, toArray } from '../../../_helpers';
 import { addClass, removeClass } from '../../../_helpers/DOM';
 export default class PageViewContentItem {
 	state = {
@@ -34,20 +34,21 @@ export default class PageViewContentItem {
 		const _self = this;
 		const sortable = Sortable.create(this.el, {
 			group: {
-				put: 'component',
+				put: ['component', 'grid'],
 				pull: false,
 			},
-			onMove: function (event, originalEvent) {},
-			onStart: function (event) {},
 			onAdd: function (event) {
 				addClass(_self.el, 'has-component');
 			},
-			onAdd: function (event) {
-				console.log(
-					'PageViewContentItem -> handleDragDrop -> onAdd -> event',
-					event
-				);
-			},
+		});
+	}
+
+	handleChildDragDrop(el) {
+		console.log('PageViewContentItem -> handleChildDragDrop -> el', el);
+		toArray(
+			el.querySelectorAll('.container, .grid, [class*="col-"]')
+		).forEach((el) => {
+			console.log(el);
 		});
 	}
 }

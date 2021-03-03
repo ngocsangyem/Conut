@@ -490,6 +490,11 @@
   outline: none;
 }
 
+.page-view-content-item .container {
+  margin-bottom: -1rem;
+  position: relative;
+}
+
 .page-view-contents.is-dragging .page-view-content-item::after {
   color: rgba(255, 255, 255, 0.5);
 }
